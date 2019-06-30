@@ -5,6 +5,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'onboarding', pathMatch: 'full' },
   { path: 'app', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'onboarding', loadChildren: './pages/onboarding/onboarding.module#OnboardingPageModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
 ];
 
 @NgModule({

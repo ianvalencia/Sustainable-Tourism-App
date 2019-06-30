@@ -19,7 +19,7 @@ export class OnboardingPage {
   }
 
   skip() {
-    this.router.navigateByUrl('/app/tabs/discover');
+    this.router.navigateByUrl('/login');
   }
 
   slideChanged() {
