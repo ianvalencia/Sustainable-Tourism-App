@@ -19,7 +19,7 @@ export class OnboardingPage {
   }
 
   skip() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/register');
   }
 
   slideChanged() {
