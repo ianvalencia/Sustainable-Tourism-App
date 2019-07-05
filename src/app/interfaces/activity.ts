@@ -6,4 +6,6 @@ export interface Activity {
   description: string;
   location: string;
   activityType: string;
+  imgUrl: string;
+  rating: number;
 }

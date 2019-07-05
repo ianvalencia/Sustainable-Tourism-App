@@ -5,8 +5,8 @@ import { Activity } from '../interfaces/activity';
 @Injectable({
   providedIn: 'root'
 })
-export class ActivitiesService {
-  private _activities: Activity[] = [
+export class BookingsService {
+  private _booking: Activity[] = [
     {
       id: 'a1',
       name: 'Mount Something Hiking',
@@ -55,7 +55,7 @@ export class ActivitiesService {
 
   constructor() { }
 
-  get activities() {
-    return [...this._activities];
+  get bookings() {
+    return [...this.bookings]
   }
 }

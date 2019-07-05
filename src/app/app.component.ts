@@ -13,16 +13,14 @@ export class AppComponent {
   menuItems = [
     {
       icon: 'contact',
-      label: 'Profile'
+      label: 'Profile',
+      link: '/profile'
     },
     {
       icon: 'heart',
-      label: 'My Favorites'
+      label: 'My Favorites',
+      link: '/favorites'
     },
-    // {
-    //   icon: 'exit',
-    //   label: 'Logout'
-    // },
   ];
 
   constructor(
@@ -42,7 +40,7 @@ export class AppComponent {
     });
   }
 
-  logout() {
+  onLogout() {
     this.navCtrl.navigateBack('/login');
   }
 }
