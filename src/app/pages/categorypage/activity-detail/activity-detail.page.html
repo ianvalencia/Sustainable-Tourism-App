@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/categorypage">
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ loadedActivity.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col no-padding>
+          <ion-img [src]="loadedActivity.imageUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1 text-center>{{ loadedActivity.title }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+          <ion-list>
+          <ion-item *ngFor="let ig of loadedActivity.details">
+            {{ ig }}
+          </ion-item>
+        </ion-list>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  
+</ion-content>
