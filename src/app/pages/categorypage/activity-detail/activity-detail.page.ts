@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 
-import { CategorypageService } from '../categorypage.service';
+import { ActivitiesService } from 'src/app/services/activities.service';
 
-import { Activity } from '../activity.model';
+import { Activity } from 'src/app/interfaces/activity';
 
 @Component({
   selector: 'app-activity-detail',
@@ -13,7 +13,7 @@ import { Activity } from '../activity.model';
 })
 export class ActivityDetailPage implements OnInit {
   loadedActivity: Activity;
-  constructor(private activatedRoute: ActivatedRoute, private ActService: CategorypageService) { }
+  constructor(private activatedRoute: ActivatedRoute, private ActService: ActivitiesService) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {

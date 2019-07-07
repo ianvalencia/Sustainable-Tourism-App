@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-searchbar placeholder="Search for a destination or activity"></ion-searchbar>
-  <ion-card *ngFor="let category of categories">
+  <ion-card *ngFor="let category of categories" (click)="skip()">
       <ion-img src={{category.imageUrl}}></ion-img>
       <div class="category-overlay">
         <div class="category-title">{{ category.categoryName }}</div>

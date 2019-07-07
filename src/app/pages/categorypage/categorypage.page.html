@@ -10,9 +10,9 @@
 <ion-content>
   <ion-searchbar placeholder="Search for a destination or activity"></ion-searchbar>
   <ion-card *ngFor="let activity of activities" [routerLink]="['./', activity.id]">
-      <ion-img src={{activity.imageUrl}}></ion-img>
+      <ion-img src={{activity.imgUrl}}></ion-img>
       <div class="category-overlay">
-        <div class="category-title">{{ activity.title }}</div>
+        <div class="category-title">{{ activity.name }}</div>
       </div>
   </ion-card>
 </ion-content>

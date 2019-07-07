@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Activity } from 'src/app/pages/categorypage/activity.model';
-
-import { CategorypageService } from './categorypage.service'
+import { Activity } from 'src/app/interfaces/activity';
+import { ActivitiesService } from 'src/app/services/activities.service'
 
 @Component({
   selector: 'app-categorypage',
@@ -10,10 +9,10 @@ import { CategorypageService } from './categorypage.service'
 })
 export class CategorypagePage implements OnInit {
   activities: Activity[];
-  constructor(private ActivityService: CategorypageService) { }
+  constructor(private ActivityService: ActivitiesService) { }
 
   ngOnInit() {
-    this.activities = this.ActivityService.getAllActivites();
+    this.activities = this.ActivityService.getActivities();
   }
 
 }
