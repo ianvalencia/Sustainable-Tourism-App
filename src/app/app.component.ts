@@ -12,16 +12,14 @@ export class AppComponent {
   menuItems = [
     {
       icon: 'contact',
-      label: 'Profile'
+      label: 'Profile',
+      link: '/profile'
     },
     {
       icon: 'heart',
-      label: 'My Favorites'
+      label: 'My Favorites',
+      link: '/favorites'
     },
-    // {
-    //   icon: 'exit',
-    //   label: 'Logout'
-    // },
   ];
 
   constructor(
@@ -37,5 +35,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+  onLogout() {
+    this.navCtrl.navigateBack('/login');
   }
 }
