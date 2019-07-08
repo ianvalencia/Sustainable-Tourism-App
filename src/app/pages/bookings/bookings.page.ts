@@ -20,6 +20,6 @@ export class BookingsPage implements OnInit {
   }
 
   ngOnInit() {
-    //this.bookings = this.bookingsService.bookings;
+    this.bookings = this.bookingsService.bookings;
   }
 }

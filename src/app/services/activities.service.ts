@@ -63,7 +63,6 @@ export class ActivitiesService {
     return {
       ...this._activities.find(activity => {
         return activity.id === actId;
-    })
-  };
+    })};
   }
 }

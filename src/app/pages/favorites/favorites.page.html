@@ -8,5 +8,20 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let activity of favorites" color="primary" [routerLink]="['/app/tabs/discover/categorypage', activity.id]">
+    <div class="activity-overlay" [ngStyle]="{'background-image': 'url(' + activity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
+      <div class="activity-subtitle">{{ activity.provider }}</div>
+      <div class="activity-title">{{ activity.name }}</div>
+    </div>
+    <div class="activity-footer">
+      <div>
+        <ion-icon name="star"></ion-icon>
+        <ion-text>  {{ activity.rating | number:'.2-2' }}/5.00</ion-text>
+      </div>
+      <div>
+        <ion-icon name="cash"></ion-icon>
+        <ion-text>  {{ activity.price | currency:'PHP' }}</ion-text>
+      </div>
+    </div>
+  </ion-card>
 </ion-content>

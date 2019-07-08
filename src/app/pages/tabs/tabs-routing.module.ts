@@ -9,20 +9,25 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPage,
     children: [
-      { 
+      {
         path: 'discover',
-        loadChildren: '../discover/discover.module#DiscoverPageModule'
-      },
-      { 
-        path: 'categorypage',
         children: [
-          { 
+          {
             path: '',
-            loadChildren: '../categorypage/categorypage.module#CategorypagePageModule'
+            loadChildren: '../discover/discover.module#DiscoverPageModule',
           },
           {
-            path: ':actId',
-            loadChildren: '../categorypage/activity-detail/activity-detail.module#ActivityDetailPageModule'
+            path: 'categorypage',
+            children: [
+              {
+                path: '',
+                loadChildren: '../categorypage/categorypage.module#CategorypagePageModule'
+              },
+              {
+                path: ':actId',
+                loadChildren: '../categorypage/activity-detail/activity-detail.module#ActivityDetailPageModule'
+              }
+            ]
           }
         ]
       },
