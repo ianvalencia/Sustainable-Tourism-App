@@ -7,7 +7,7 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item-divider id="sidemenu-opts">
+        <ion-item-divider>
           <ion-menu-toggle *ngFor="let item of menuItems">
             <ion-item lines="none" class="menu-items" [routerLink]="item.link">
               <ion-icon [name]="item.icon" slot="start"></ion-icon>
@@ -21,6 +21,9 @@
             <ion-label>Logout</ion-label>
           </ion-item>
         </ion-menu-toggle>
+        
+        
+
       </ion-list>
     </ion-content>
   </ion-menu>

@@ -28,16 +28,16 @@
             <ion-input type="password"></ion-input>
           </ion-item>
           <p text-right>
-            <ion-text (click)="onForgotPassword()" color="primary">
+            <ion-text (click)="forgotPassword()" color="primary">
               <strong>Forgot Password?</strong>
             </ion-text>
           </p>
-          <ion-button class="btn-signin" expand="block" (click)="onSubmit()">SIGN IN</ion-button>
+          <ion-button class="btn-signin" expand="block" (click)="login()">SIGN IN</ion-button>
         </form>
 
         <div class="sections">
           <hr class="hr-text" data-content="OR">
-          <ion-button class="btn-signin" expand="block" (click)="onGoogleSignIn()" fill="outline" color="danger">
+          <ion-button class="btn-signin" expand="block" (click)="login()" fill="outline">
             <ion-icon name="logo-google" slot="start"></ion-icon>
             SIGN IN WITH GOOGLE
           </ion-button>
@@ -48,7 +48,7 @@
       <!-- Other links -->
       <div text-center class="sections" id="signup">
         New here?
-        <ion-text color="primary" (click)="onSwitch()"><strong>Sign up</strong></ion-text>
+        <ion-text color="primary" (click)="register()"><strong>Sign up</strong></ion-text>
       </div>
   
     </div>
