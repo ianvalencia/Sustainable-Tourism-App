@@ -55,7 +55,15 @@ export class ActivitiesService {
 
   constructor() { }
 
-  get activities() {
+  getActivities() {
     return [...this._activities];
+  }
+
+  getActivity(actId: string) {
+    return {
+      ...this._activities.find(activity => {
+        return activity.id === actId;
+    })
+  };
   }
 }

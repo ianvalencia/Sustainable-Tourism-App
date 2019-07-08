@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/interfaces/category';
+
+import { Category } from 'src/app/interfaces/category.model';
+
+import { DiscoverService } from './discover.service'
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-discover',
@@ -7,31 +12,14 @@ import { Category } from 'src/app/interfaces/category';
   styleUrls: ['./discover.page.scss'],
 })
 export class DiscoverPage implements OnInit {
-  categories: Category[] = [
-    {
-      imageUrl: 'assets/img/bikepacking.jpg',
-      categoryName: 'BIKE PACKING'
-    },
-    {
-      imageUrl: 'assets/img/mountaineering.jpg',
-      categoryName: 'MOUNTAINEERING'
-    },
-    {
-      imageUrl: 'assets/img/skindiving.jpg',
-      categoryName: 'SKIN DIVING'
-    },
-    {
-      imageUrl: 'assets/img/dayhiking.jpg',
-      categoryName: 'DAY HIKING'
-    },
-    {
-      imageUrl: 'assets/img/birdwatching.jpg',
-      categoryName: 'BIRDING'
-    },
-  ];
-  constructor() { }
+  categories: Category[];
+  constructor(private CategoryService: DiscoverService, private router: Router) { }
 
   ngOnInit() {
+    this.categories = this.CategoryService.getAllCategories();
   }
 
+  skip() {
+    this.router.navigateByUrl('/app/tabs/categorypage');
+  }
 }
