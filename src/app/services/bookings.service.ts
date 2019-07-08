@@ -6,7 +6,7 @@ import { Activity } from '../interfaces/activity';
   providedIn: 'root'
 })
 export class BookingsService {
-  private _booking: Activity[] = [
+  private _bookings: Activity[] = [
     {
       id: 'a1',
       name: 'Mount Something Hiking',
@@ -56,6 +56,10 @@ export class BookingsService {
   constructor() { }
 
   get bookings() {
-    return [...this.bookings]
+    return [...this._bookings]
+  }
+
+  getBooking(id: string) {
+    return {...this._bookings.find(p => p.id === id)};
   }
 }

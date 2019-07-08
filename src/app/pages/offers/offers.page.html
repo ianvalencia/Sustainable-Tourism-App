@@ -13,6 +13,11 @@
 </ion-header>
 
 <ion-content>
-  No activities offered
-
+  <div id="offers-container">
+    <div *ngIf="isOffersEmpty()">
+      <ion-text>
+        No activities offered
+      </ion-text>
+    </div>
+  </div>
 </ion-content>

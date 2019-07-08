@@ -1,22 +1,21 @@
 <ion-app>
   <ion-menu side="start">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Start Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item-divider id="sidemenu-opts">
-          <ion-menu-toggle *ngFor="let item of menuItems">
-            <ion-item lines="none" class="menu-items" [routerLink]="item.link">
-              <ion-icon [name]="item.icon" slot="start"></ion-icon>
-              <ion-label>{{ item.label }}</ion-label>
-            </ion-item>            
-          </ion-menu-toggle>
-        </ion-item-divider>
+    <ion-content color="primary">
+      <div id="menu-header">
+        <ion-avatar>
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <ion-text>Juan Dela Cruz</ion-text>
+      </div>
+      <ion-list color="primary" id="menu-list">
+        <ion-menu-toggle *ngFor="let item of menuItems">
+          <ion-item lines="none" class="menu-items" [routerLink]="item.link" color="primary">
+            <ion-icon [name]="item.icon" slot="start"></ion-icon>
+            <ion-label>{{ item.label }}</ion-label>
+          </ion-item>            
+        </ion-menu-toggle>
         <ion-menu-toggle>
-          <ion-item lines="none" (click)="onLogout()" button>
+          <ion-item lines="none" (click)="onLogout()" button color="primary">
             <ion-icon name="exit" slot="start"></ion-icon>
             <ion-label>Logout</ion-label>
           </ion-item>

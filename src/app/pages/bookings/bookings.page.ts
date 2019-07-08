@@ -12,7 +12,14 @@ export class BookingsPage implements OnInit {
 
   constructor(private bookingsService: BookingsService) { }
 
+  public isBookingsEmpty() {
+    if (this.bookings.length === 0) {
+      return true;
+    }
+    return false;
+  }
+
   ngOnInit() {
-    this.bookings = this.bookingsService.bookings;
+    //this.bookings = this.bookingsService.bookings;
   }
 }

@@ -7,6 +7,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <div id="bookings-container" *ngIf="isBookingsEmpty()">
+    <ion-text>
+      No activities booked
+    </ion-text>
+  </div>
+  <div *ngIf="!isBookingsEmpty()">
+    <ion-card *ngFor="let booking of bookings" color="primary" [routerLink]="['/', 'booking-details', booking.id]">
+      <div class="booking-overlay" [ngStyle]="{'background-image': 'url(' + booking.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
+        <div class="booking-subtitle">{{ booking.provider }}</div>
+        <div class="booking-title">{{ booking.name }}</div>
+      </div>
+      <!-- <ion-card-header [ngStyle]="{'background-image': 'url(' + booking.imgUrl + ')'}">
+        <ion-img [src]="booking.imgUrl"></ion-img>
+        <ion-card-subtitle>{{ booking.provider }}</ion-card-subtitle>
+        <ion-card-title>{{ booking.name }}</ion-card-title>
+      </ion-card-header> -->
+      <div class="booking-footer">
+        <div>
+          <ion-icon name="star"></ion-icon>
+          <ion-text>  {{ booking.rating | number:'.2-2' }}/5.00</ion-text>
+        </div>
+        <div>
+          <ion-icon name="cash"></ion-icon>
+          <ion-text>  {{ booking.price | currency:'PHP' }}</ion-text>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+    
 </ion-content>
