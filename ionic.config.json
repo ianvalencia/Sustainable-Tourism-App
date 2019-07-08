@@ -1,0 +1,7 @@
+{
+  "name": "Sustainable Tourism App",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

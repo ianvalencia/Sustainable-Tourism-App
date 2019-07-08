@@ -1,0 +1,16 @@
+.category-overlay {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 99;
+  bottom: 0px;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  padding: 0.75em;
+}
+
+.category-title {
+  font-size: 2em;
+  font-weight: 900;
+}
