@@ -6,7 +6,7 @@
       <div class="title">
         <ion-icon name="bonfire" id="logo" color="primary"></ion-icon>
         <h2 ion-text class="text-primary">
-          Sustainable Tourism App
+          Tripid
         </h2>
       </div>
   
@@ -17,7 +17,7 @@
               <ion-icon name="mail" slot="start" class="text-primary"></ion-icon>
               Email
             </ion-label>
-            <ion-input type="email" inputmode="email" pattern="email"></ion-input>
+            <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>
           </ion-item>
     
           <ion-item>
@@ -25,19 +25,19 @@
               <ion-icon name="lock" item-start class="text-primary"></ion-icon>
               Password
             </ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
           </ion-item>
           <p text-right>
-            <ion-text (click)="forgotPassword()" color="primary">
+            <ion-text (click)="onForgotPassword()" color="primary">
               <strong>Forgot Password?</strong>
             </ion-text>
           </p>
-          <ion-button class="btn-signin" expand="block" (click)="login()">SIGN IN</ion-button>
+          <ion-button class="btn-signin" expand="block" (click)="onSubmit()">SIGN IN</ion-button>
         </form>
 
         <div class="sections">
           <hr class="hr-text" data-content="OR">
-          <ion-button class="btn-signin" expand="block" (click)="login()" fill="outline">
+          <ion-button class="btn-signin" expand="block" (click)="onGoogleSignIn()" fill="outline" color="danger">
             <ion-icon name="logo-google" slot="start"></ion-icon>
             SIGN IN WITH GOOGLE
           </ion-button>
@@ -48,7 +48,7 @@
       <!-- Other links -->
       <div text-center class="sections" id="signup">
         New here?
-        <ion-text color="primary" (click)="register()"><strong>Sign up</strong></ion-text>
+        <ion-text color="primary" (click)="onSwitch()"><strong>Sign up</strong></ion-text>
       </div>
   
     </div>
