@@ -7,8 +7,7 @@ const routes: Routes = [
   { path: 'onboarding', loadChildren: './pages/onboarding/onboarding.module#OnboardingPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
-  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
-  { path: 'favorites', loadChildren: './pages/favorites/favorites.module#FavoritesPageModule' },
+  { path: 'new-offer', loadChildren: './pages/new-offer/new-offer.module#NewOfferPageModule' },
 ];
 
 @NgModule({

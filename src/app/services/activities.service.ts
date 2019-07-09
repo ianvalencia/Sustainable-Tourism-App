@@ -15,8 +15,7 @@ export class ActivitiesService {
       description: 'Lorem Ipsum hehe',
       location: 'Philippines',
       activityType: 'Hiking',
-      imgUrl: 'https://www.travelwyoming.com/sites/default/files/uploads/consumer/7-18_MedicineBowHikingFishing_KL_0708_3298.jpg',
-      rating: 5.0
+      imgUrl: 'https://www.travelwyoming.com/sites/default/files/uploads/consumer/7-18_MedicineBowHikingFishing_KL_0708_3298.jpg'
     },
     {
       id: 'a2',
@@ -26,8 +25,7 @@ export class ActivitiesService {
       description: 'Lorem Ipsum hehe',
       location: 'Philippines',
       activityType: 'Skin Diving',
-      imgUrl: 'https://www.divein.com/wp-content/uploads/image-archive/img/skin-diving-on-reef.jpg',
-      rating: 5.0
+      imgUrl: 'https://www.travelwyoming.com/sites/default/files/uploads/consumer/7-18_MedicineBowHikingFishing_KL_0708_3298.jpg'
     },
     {
       id: 'a3',
@@ -37,8 +35,7 @@ export class ActivitiesService {
       description: 'Lorem Ipsum hehe',
       location: 'Philippines',
       activityType: 'Birding',
-      imgUrl: 'https://www.audubon.org/sites/default/files/web_strawberry-plain_camillacerea-1-of-1.jpg',
-      rating: 5.0
+      imgUrl: 'https://www.travelwyoming.com/sites/default/files/uploads/consumer/7-18_MedicineBowHikingFishing_KL_0708_3298.jpg'
     },
     {
       id: 'a4',
@@ -48,8 +45,7 @@ export class ActivitiesService {
       description: 'Lorem Ipsum hehe',
       location: 'Philippines',
       activityType: 'Bike Packing',
-      imgUrl: 'https://yaffa-cdn.s3.amazonaws.com/yaffadsp/images/dmImage/StandardImage/Ortlieb-4.jpg',
-      rating: 5.0
+      imgUrl: 'https://www.travelwyoming.com/sites/default/files/uploads/consumer/7-18_MedicineBowHikingFishing_KL_0708_3298.jpg'
     },
   ];
 

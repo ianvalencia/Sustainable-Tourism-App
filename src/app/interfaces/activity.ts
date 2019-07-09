@@ -7,5 +7,4 @@ export interface Activity {
   location: string;
   activityType: string;
   imgUrl: string;
-  rating: number;
 }
