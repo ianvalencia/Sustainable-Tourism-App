@@ -3,7 +3,18 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/discover" mode="md"></ion-back-button>
     </ion-buttons>
+    <ion-buttons  mode="md" slot="primary">
+      <ion-button>
+        <ion-icon name="heart-empty" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button>
+          <ion-icon name="more" slot="icon-only"></ion-icon>
+        </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+</ion-header>
+
+<ion-content>
   <ion-slides pager="true">
     <ion-slide>
       <div class="transparent-gradient"></div>
@@ -18,20 +29,38 @@
       <ion-img [src]="loadedActivity.imgUrl"></ion-img>
     </ion-slide>
   </ion-slides>
-</ion-header>
-
-<ion-content>
-    <ion-fab vertical="top" horizontal="end" edge slot="fixed">
-      <ion-fab-button color="light">
-        <ion-icon name="heart" color="primary"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    <div class="subsection-container" id="title">
-      <ion-text class="subtitle-1">{{ loadedActivity.provider }} | {{ loadedActivity.activityType }}</ion-text>
-      <ion-text class="heading-1">{{ loadedActivity.name }}</ion-text>
-      <ion-text class="subtitle-1">{{ loadedActivity.price | currency:'PHP' }} | {{ loadedActivity.location }}</ion-text>
-      <div class="hr-line"></div>
-    </div>
+  <div class="subsection-container" id="title">
+    <ion-text class="subtitle-1">{{ loadedActivity.provider }} | {{ loadedActivity.activityType }}</ion-text>
+    <ion-text class="h5">{{ loadedActivity.name }}</ion-text>
+    <ion-text class="subtitle-1"><ion-icon name="cash"></ion-icon>  {{ loadedActivity.price | currency:'PHP' }}</ion-text>
+    <div class="hr-line"></div>
+    <ion-text class="h6 subsection-header">Activity Details</ion-text>
+    <ion-item lines="none" class="body">
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label>{{ loadedActivity.location }}</ion-label>
+      <ion-note slot="end">Location</ion-note>
+    </ion-item>
+    <ion-item lines="none" class="body">
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>{{ loadedActivity.schedule }}</ion-label>
+      <ion-note slot="end">Schedule</ion-note>
+    </ion-item>
+    <ion-item lines="none" class="body">
+      <ion-icon name="call" slot="start"></ion-icon>
+      <ion-label>{{ loadedActivity.contactDetails }}</ion-label>
+      <ion-note slot="end">Contact Number</ion-note>
+    </ion-item>
+    <div class="hr-line"></div>
+    <ion-text class="h6 subsection-header">Description</ion-text>
+    <ion-text class="body">{{ loadedActivity.description }}</ion-text>
+    <div class="hr-line"></div>
+    <ion-text class="h6 subsection-header">Rating</ion-text>
+    
+  </div>
     
 
 </ion-content>
+
+<ion-footer mode="ios">
+  <ion-button id="book-btn">BOOK ACTIVITY</ion-button>
+</ion-footer>

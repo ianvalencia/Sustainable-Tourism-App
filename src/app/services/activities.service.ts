@@ -6,17 +6,19 @@ import { Activity } from '../interfaces/activity';
   providedIn: 'root'
 })
 export class ActivitiesService {
-  private _activities: Activity[] = [
+  private _activities = [
     {
       id: 'a1',
       name: 'Mount Something Hiking',
       provider: 'Bridge360',
       price: 1500,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et imperdiet nulla, sit amet posuere erat. Maecenas interdum magna sed consequat eleifend. Praesent mattis justo eu felis fermentum, nec ultrices orci commodo. Maecenas ut eleifend ante. Pellentesque at dui non dui ornare venenatis. Duis non sapien leo. Nulla viverra nibh elit, quis porta sem aliquet nec. Sed sem eros, iaculis ac neque eu, sagittis luctus massa. Aenean hendrerit quis ligula eget dictum. Aenean lacus diam, lacinia nec turpis ut, bibendum elementum dui. Etiam id porta metus, sed posuere libero. Fusce hendrerit vestibulum sapien, at volutpat eros ultricies vel. Integer sollicitudin sem at urna malesuada efficitur. Nullam finibus mauris odio. Sed lobortis justo ac urna blandit vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras congue hendrerit lectus, id varius erat pellentesque ac. Morbi ultrices, ipsum ac pretium efficitur, enim dolor consectetur nisl, sed egestas lacus elit non justo. Donec sodales diam lectus, sed iaculis ligula tempus nec. Quisque vitae pulvinar diam, sit amet ultricies orci. In porta augue lacus, luctus sodales odio egestas eu. Vestibulum.',
       location: 'Philippines',
       activityType: 'Hiking',
       imgUrl: 'https://www.travelwyoming.com/sites/default/files/uploads/consumer/7-18_MedicineBowHikingFishing_KL_0708_3298.jpg',
-      rating: 5.0
+      rating: 5.0,
+      contactDetails: '09123456789',
+      schedule: 'July 24-26, 2019'
     },
     // {
     //   id: 'a2',
