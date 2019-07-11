@@ -8,12 +8,14 @@ import { FavoritesService } from 'src/app/services/favorites.service';
   styleUrls: ['./favorites.page.scss'],
 })
 export class FavoritesPage implements OnInit {
-  favorites: Activity[];
+  favorites;
 
   constructor(private favoritesService: FavoritesService) { }
 
   ngOnInit() {
-    this.favorites = this.favoritesService.bookings;
   }
 
+  ionViewWillEnter() {
+    this.favorites = this.favoritesService.bookings;
+  }
 }
