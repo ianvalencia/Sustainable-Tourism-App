@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'favorites', loadChildren: './pages/favorites/favorites.module#FavoritesPageModule' },
   { path: 'booking-details/:id', loadChildren: './pages/booking-details/booking-details.module#BookingDetailsPageModule' },
+  { path: 'activity-details/:id', loadChildren: './pages/activity-details/activity-details.module#ActivityDetailsPageModule' },
 ];
 
 @NgModule({

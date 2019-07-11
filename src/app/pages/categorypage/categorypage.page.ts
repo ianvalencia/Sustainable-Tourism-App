@@ -8,7 +8,8 @@ import { ActivitiesService } from 'src/app/services/activities.service'
   styleUrls: ['./categorypage.page.scss'],
 })
 export class CategorypagePage implements OnInit {
-  activities: Activity[];
+  activities;
+
   constructor(private ActivityService: ActivitiesService) { }
 
   ngOnInit() {

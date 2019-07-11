@@ -1,21 +1,21 @@
 <ion-header>
   <ion-toolbar mode="ios">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/app/tabs/bookings" mode="md"></ion-back-button>
+      <ion-back-button defaultHref="/app/tabs/discover" mode="md"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
   <ion-slides pager="true">
     <ion-slide>
       <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
+      <ion-img [src]="loadedActivity.imgUrl"></ion-img>
     </ion-slide>
     <ion-slide>
       <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
+      <ion-img [src]="loadedActivity.imgUrl"></ion-img>
     </ion-slide>
     <ion-slide>
       <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
+      <ion-img [src]="loadedActivity.imgUrl"></ion-img>
     </ion-slide>
   </ion-slides>
 </ion-header>
@@ -27,9 +27,11 @@
       </ion-fab-button>
     </ion-fab>
     <div class="subsection-container" id="title">
-      <ion-text>{{ booking.provider }} | {{ booking.activityType }}</ion-text>
-      <ion-text>{{ booking.name }}</ion-text>
-      <ion-text>{{ booking.price | currency:'PHP' }} | {{ booking.location }}</ion-text>
+      <ion-text class="subtitle-1">{{ loadedActivity.provider }} | {{ loadedActivity.activityType }}</ion-text>
+      <ion-text class="heading-1">{{ loadedActivity.name }}</ion-text>
+      <ion-text class="subtitle-1">{{ loadedActivity.price | currency:'PHP' }} | {{ loadedActivity.location }}</ion-text>
+      <div class="hr-line"></div>
     </div>
+    
 
 </ion-content>
