@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/app/tabs/discover">
+  
+        </ion-back-button>
+      </ion-buttons>
+      <ion-title>Create a New Offer Now!</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+      <ion-col size-md="6" offset-md="3">    
+  <ion-card>
+      <ion-card-header>
+          <ion-card-title>New Offer Form</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+              <ion-item>
+                  <ion-label position="floating">Name of Offer</ion-label>
+                  <ion-input type="text" id="inputr"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Name of Provider</ion-label>
+                <ion-input type="text" id="inputp"></ion-input>
+              </ion-item>  
+              <ion-item>
+              <ion-item>
+                <ion-label position="floating">Activity Type</ion-label>
+                <ion-input type="text" id="inputt"></ion-input>
+              </ion-item> 
+                <ion-label position="floating">Location</ion-label>
+                <ion-input type="text" id="inputl"></ion-input>
+            </ion-item>
+            <ion-item>
+                    <ion-label position="floating">Description</ion-label>
+                    <ion-input type="text" id="inputd"></ion-input>
+                </ion-item>  
+              <ion-item>
+                  <ion-label position="floating">Price</ion-label>
+                  <ion-input type="number" id=inputa></ion-input>
+              </ion-item>
+              <ion-item>
+                    <ion-label position="floating">Image</ion-label>
+                    <ion-input type="text" id="inputi"></ion-input>
+                </ion-item> 
+              <div margin-vertical text-right>
+              <ion-button fill="outline" color="danger" id="button1"><ion-icon slot ="start" name="close"></ion-icon>Clear</ion-button>
+              <ion-button id="button2">Submit</ion-button>
+              </div>
+      </ion-card-content>
+  </ion-card>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+  </ion-content>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/app/interfaces/activity';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.page.html',
@@ -8,7 +10,7 @@ import { Activity } from 'src/app/interfaces/activity';
 })
 export class OffersPage implements OnInit {
   private OFFERS: Activity[] = [];
-  constructor() { }
+  constructor(private router: Router) { }
 
   get offers() {
     return [...this.OFFERS];
@@ -19,6 +21,10 @@ export class OffersPage implements OnInit {
       return true;
     }
     return false;
+  }
+
+  newOffer() {
+    this.router.navigateByUrl('/new-offer');
   }
 
   ngOnInit() {

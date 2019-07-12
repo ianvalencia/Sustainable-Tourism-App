@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'favorites', loadChildren: './pages/favorites/favorites.module#FavoritesPageModule' },
   { path: 'booking-details/:id', loadChildren: './pages/booking-details/booking-details.module#BookingDetailsPageModule' },
   { path: 'activity-details/:id', loadChildren: './pages/activity-details/activity-details.module#ActivityDetailsPageModule' },
+  { path: 'new-offer', loadChildren: './pages/new-offer/new-offer.module#NewOfferPageModule' },
 ];
 
 @NgModule({
