@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ActivityDetailsPage } from './activity-details.page';
+import { CheckoutComponent } from 'src/app/components/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ActivityDetailsPage]
+  declarations: [ActivityDetailsPage, CheckoutComponent],
+  entryComponents: [CheckoutComponent]
 })
 export class ActivityDetailsPageModule {}

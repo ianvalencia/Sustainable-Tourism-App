@@ -28,7 +28,6 @@ export class FavoritesService {
   }
 
   checkIfFavorite(id: string) {
-    console.log(id + ': ' + this.favoritesId.includes(id));
     return this.favoritesId.includes(id);
   }
 

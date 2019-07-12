@@ -3,6 +3,8 @@ ion-toolbar {
   z-index: 4;
   --background: rgba(255, 255, 255, 0);
   --color: white;
+  --ion-color-base: transparent !important;
+  --border-color: transparent;
 }
 
 ion-footer {

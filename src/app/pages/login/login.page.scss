@@ -13,6 +13,10 @@
 
 .title {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #logo {
@@ -66,4 +70,10 @@
 
 #signup {
   margin-top: 50px;
+}
+
+#app-name {
+  font-weight: 800;
+  letter-spacing: 0.125em;
+  font-size: 48px;
 }
