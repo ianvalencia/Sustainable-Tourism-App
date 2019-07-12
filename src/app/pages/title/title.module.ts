@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPage } from './login.page';
-import { TextDividerComponent } from 'src/app/components/text-divider/text-divider.component';
+import { TitlePage } from './title.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage
+    component: TitlePage
   }
 ];
 
@@ -22,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginPage, TextDividerComponent]
+  declarations: [TitlePage]
 })
-export class LoginPageModule {}
+export class TitlePageModule {}

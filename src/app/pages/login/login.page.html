@@ -1,52 +1,63 @@
 <!-- -->
-<ion-content>
+<!-- <ion-header no-border>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign In</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content fullscreen>
     <div class="login-content">
-  
-      <!-- Logo -->
-      <div class="title">
-        <ion-icon name="bonfire" id="logo" color="primary"></ion-icon>
-        <ion-text class="ion-text-uppercase ion-margin-vertical" id="app-name">Tripid</ion-text>
-      </div>
+      <ion-text class="ion-text-capitalize ion-margin-vertical h2">Sign In.</ion-text>
+
   
       <!-- Login form -->
-      <form class="sections">
-          <ion-item>
-            <ion-label position="floating">
-              <ion-icon name="mail" slot="start" class="text-primary"></ion-icon>
+      <form mode="md">
+        <ion-list mode="md">
+          <ion-item mode="md">
+            <ion-label mode="md" position="floating">
+              <!-- <ion-icon name="mail" slot="start" class="icon"></ion-icon> -->
               Email
             </ion-label>
             <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>
           </ion-item>
     
-          <ion-item>
-            <ion-label position="floating">
-              <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          <ion-item mode="md">
+            <ion-label mode="md" position="floating">
+              <!-- <ion-icon name="lock" item-start class="text-primary"></ion-icon> -->
               Password
             </ion-label>
             <ion-input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
+            <ion-buttons mode="md" slot="end">
+              <ion-button>
+                <ion-icon name="eye" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-buttons>
           </ion-item>
-          <p text-right>
-            <ion-text (click)="onForgotPassword()" color="primary">
-              <strong>Forgot Password?</strong>
-            </ion-text>
-          </p>
-          <ion-button class="btn-signin" expand="block" (click)="onSubmit()">SIGN IN</ion-button>
-        </form>
+        </ion-list>
+      </form>
 
-        <div class="sections">
-          <hr class="hr-text" data-content="OR">
-          <ion-button class="btn-signin" expand="block" (click)="onGoogleSignIn()" fill="outline" color="danger">
-            <ion-icon name="logo-google" slot="start"></ion-icon>
-            SIGN IN WITH GOOGLE
-          </ion-button>
-        </div>
-  
-  
-  
+      <div class="ion-margin-bottom" text-right>
+        <ion-text class="text-button" (click)="onForgotPassword()" color="inverted-primary">
+          <strong>Forgot Password?</strong>
+        </ion-text>
+      </div>
+
+      <div class="stretch flex-center">
+        <ion-button class="btn-signin" expand="block" (click)="onSubmit()" color="inverted-primary">SIGN IN</ion-button>
+        <app-text-divider></app-text-divider>
+        <ion-button class="btn-signin" expand="block" (click)="onGoogleSignIn()" fill="outline" color="inverted-primary">
+          <ion-icon name="logo-google" slot="start"></ion-icon>
+          SIGN IN WITH GOOGLE
+        </ion-button>
+      </div>
+      
       <!-- Other links -->
-      <div text-center class="sections" id="signup">
+      <div text-center id="signup">
         New here?
-        <ion-text color="primary" (click)="onSwitch()"><strong>Sign up</strong></ion-text>
+        <ion-text class="text-button" color="inverted-primary" (click)="onSwitch()"><strong>Sign up</strong></ion-text>
       </div>
   
     </div>

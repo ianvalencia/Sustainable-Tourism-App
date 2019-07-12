@@ -1,79 +1,68 @@
+ion-toolbar {
+  position: absolute;
+  z-index: 4;
+  --background: rgba(255, 255, 255, 0);
+  --color: white;
+  --ion-color-base: transparent !important;
+  --border-color: transparent;
+}
+
+ion-content {
+  --background: linear-gradient(#9DD8EC, 50%, #7ECF7E);
+  --color: #0B485A;
+  --overflow: hidden;
+}
+ion-list {
+  background: transparent;
+}
+
+ion-input {
+  --color: #0B485A;
+}
+
+ion-item:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+ion-item:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+ion-item {
+  --background: rgba(255, 255, 255, 1);
+  margin-bottom: 1px;
+  ion-label {
+    --color: #0B485A;
+  }
+}
+
 .login-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  //background-color: red;
-  height: 100vh;
+  height: 100%;
   padding: 0 50px;
-}
-
-.sections {
-  margin-top: 15px;
-}
-
-.title {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#logo {
-  font-size: 120px;
 }
 
 .btn-signin {
   --box-shadow: false;
-  --padding-top: 25px;
-  --padding-bottom: 25px;
-  --border-radius: 20px;
-}
-
-.forgot-pw {
-  text-align: right;
-}
-
-.hr-text {
-  line-height: 1em;
-  position: relative;
-  outline: 0;
-  border: 0;
-  color: black;
-  text-align: center;
-  height: 1.5em;
-  opacity: .5;
-  &:before {
-    content: '';
-    // use the linear-gradient for the fading effect
-    // use a solid background color for a solid bar
-    background: black;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-  }
-  &:after {
-    content: attr(data-content);
-    position: relative;
-    display: inline-block;
-    color: black;
-
-    padding: 0 .5em;
-    line-height: 1.5em;
-    // this is really the only tricky part, you need to specify the background color of the container element...
-    // color: #818078;
-    background-color: #fcfcfa;
-  }
+  --border-radius: 5em;
+  //width: 20em;
+  height: 3.5em;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.078125em;
+  align-self: stretch;
 }
 
 #signup {
   margin-top: 50px;
 }
 
-#app-name {
-  font-weight: 800;
-  letter-spacing: 0.125em;
-  font-size: 48px;
+app-text-divider {
+  align-self: stretch;
+}
+
+.text-button {
+  text-decoration: underline;
 }

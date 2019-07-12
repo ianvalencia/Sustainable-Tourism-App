@@ -13,7 +13,7 @@ export class OnboardingGuard implements CanLoad {
     // this.storage.remove('onboarded');
     return this.storage.get('onboarded').then(res => {
       if (res) {
-        this.router.navigate(['/register']);
+        this.router.navigate(['/title']);
         return false;
       } else {
         return true;

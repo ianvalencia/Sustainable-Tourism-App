@@ -42,7 +42,7 @@ export class OnboardingPage implements OnInit {
 
   startApp() {
     this.router
-      .navigateByUrl('/register')
+      .navigateByUrl('/title')
       .then(() => this.storage.set('onboarded', true));
   }
 
@@ -56,7 +56,7 @@ export class OnboardingPage implements OnInit {
   ionViewWillEnter() {
     this.storage.get('onboarded').then(res => {
       if (res === true) {
-        this.router.navigateByUrl('/register');
+        this.router.navigateByUrl('/title');
       }
     });
 
