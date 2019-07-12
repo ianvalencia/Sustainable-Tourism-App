@@ -1,34 +1,20 @@
-<ion-content fullscreen scroll="false">
-  <ion-slides pager>
-    <ion-slide>
-      <div class="diag">
-        <ion-img src="assets/img/ica-slidebox-img-1.png" class="slide-image"></ion-img>
+<ion-content scroll="false" padding>
+  <ion-slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+    <ion-slide *ngFor="let slide of slideContent">
+      <div class="ion-margin-bottom slide-img-container">
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+        <div class="circle-3"></div>
+        <ion-img [src]="slide.imgUrl" class="slide-image"></ion-img>
       </div>
-      <div class="text">
-        <h2>track your routine</h2>
-        <p>whether it's sets, reps, weight used, you can track it all with our intuitive interface.</p>
-      </div>
-    </ion-slide>
-    <ion-slide>
-      <div class="diag">
-        <img src="assets/img/ica-slidebox-img-2.png" class="slide-image" />
-      </div>
-      <div class="text">
-        <h2>set personal goals</h2>
-        <p>we're all in the gym for a reason: goals. set goals for diet and fitness.</p>
-      </div>
-    </ion-slide>
-    <ion-slide>
-      <div class="diag">
-        <img src="assets/img/ica-slidebox-img-3.png" class="slide-image" />
-      </div>
-      <div class="text">
-        <h2>chat with others</h2>
-        <p>inspire and help each other reach fitness and diet goals.</p>
-      </div>
-      <div class="button-container">
-        <ion-button (click)="skip()">CONTINUE</ion-button>
-      </div>
+      <ion-text class="ion-text-capitalize ion-padding-top h6">{{ slide.title }}</ion-text>
+      <ion-text class="ion-padding-top ion-padding-horizontal ion-margin-horizontal subtitle-1">{{ slide.subtitle }}</ion-text>
     </ion-slide>
   </ion-slides>
 </ion-content>
+
+<ion-footer class="ion-no-padding" no-border>
+  <ion-button class="ion-no-margin" [color]="showSkip ? 'light' : ''" (click)="startApp()">
+    {{ buttonMsg }}
+  </ion-button>
+</ion-footer>

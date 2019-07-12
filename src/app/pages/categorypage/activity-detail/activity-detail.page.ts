@@ -13,6 +13,7 @@ import { Activity } from 'src/app/interfaces/activity';
 })
 export class ActivityDetailPage implements OnInit {
   loadedActivity: Activity;
+
   constructor(private activatedRoute: ActivatedRoute, private ActService: ActivitiesService) { }
 
   ngOnInit() {
