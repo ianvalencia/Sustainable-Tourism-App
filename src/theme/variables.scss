@@ -4,7 +4,7 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #06d6a0;
+  --ion-color-primary: #61CC98;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -74,6 +74,273 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-font-family: 'San Francisco Display';
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Ultralight.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Thin.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Regular.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Medium.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Semibold.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Bold.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Heavy.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Black.otf');
+}
+
+// SF Italic ====================================================================
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: italic;
+  font-weight: 100;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-Ultralight.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: italic;
+  font-weight: 300;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-ThinItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-RegularItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: italic;
+  font-weight: 500;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-MediumItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: italic;
+  font-weight: 600;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-SemiboldItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-BoldItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: italic;
+  font-weight: 800;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-HeavyItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Display';
+  font-style: italic;
+  font-weight: 900;
+  src: url('../assets/fonts/SanFrancisco/Display/SF-Pro-Display-BlackItalic.otf');
+}
+
+// ======================================== San Francisco Text ========================================
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-Light.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-Regular.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-Medium.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-Semibold.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-Bold.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-Heavy.otf');
+}
+
+// SF Italic ====================================================================
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: italic;
+  font-weight: 300;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-LightItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-RegularItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: italic;
+  font-weight: 500;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-MediumItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: italic;
+  font-weight: 600;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-SemiboldItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-BoldItalic.otf');
+}
+
+@font-face {
+  font-family: 'San Francisco Text';
+  font-style: italic;
+  font-weight: 800;
+  src: url('../assets/fonts/SanFrancisco/Text/SF-Pro-Text-HeavyItalic.otf');
+}
+
+// ======================================== Helvetica Now Display ========================================
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-Thin.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-ExtLt.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-Light.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-Medium.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-Bold.otf');
 }
 
 
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-ExtraBold.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-Black.otf');
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../assets/fonts/HelveticaNow/Display/HelveticaNowDisplay-ExtBlk.otf');
+}

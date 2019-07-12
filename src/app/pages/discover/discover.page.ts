@@ -20,6 +20,6 @@ export class DiscoverPage implements OnInit {
   }
 
   skip() {
-    this.router.navigateByUrl('/app/tabs/categorypage');
+    this.router.navigateByUrl('/app/tabs/discover/categorypage');
   }
 }

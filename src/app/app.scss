@@ -7,3 +7,25 @@
 ion-menu {
   --max-width: 75vw;
 }
+
+#menu-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-bottom-width: 2px;
+  height: 150px;
+  border-color: white;
+  border-bottom-style: solid;
+}
+
+.menu-items {
+  width: 100%;
+}
+
+#menu-list {
+  margin-top: 5px;
+  padding: 0;
+}
+

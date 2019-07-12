@@ -1,11 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/categorypage">
-
-      </ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ loadedActivity.title }}</ion-title>
+    <ion-title>{{ loadedActivity.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -37,9 +35,6 @@
           </ion-item>
           <ion-item>  
             <ion-icon name="pin"></ion-icon>{{ loadedActivity.location }}
-          </ion-item>
-          <ion-item>  
-            <ion-icon name="star"></ion-icon>{{ loadedActivity.rating }} / 5.0
           </ion-item>
         </ion-list>
         </ion-col>
