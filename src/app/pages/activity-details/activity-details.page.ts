@@ -53,6 +53,12 @@ export class ActivityDetailsPage implements OnInit {
       })
       .then(modalEl => {
         modalEl.present();
+        return modalEl.onDidDismiss();
+      })
+      .then(resultData => {
+        if (resultData.role === 'book') {
+          console.log(resultData.data.bookingData);
+        }
       });
   }
 

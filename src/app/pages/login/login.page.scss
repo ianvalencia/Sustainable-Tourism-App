@@ -1,17 +1,9 @@
-ion-toolbar {
-  position: absolute;
-  z-index: 4;
-  --background: rgba(255, 255, 255, 0);
-  --color: white;
-  --ion-color-base: transparent !important;
-  --border-color: transparent;
-}
-
 ion-content {
   --background: linear-gradient(#9DD8EC, 50%, #7ECF7E);
   --color: #0B485A;
   --overflow: hidden;
 }
+
 ion-list {
   background: transparent;
 }

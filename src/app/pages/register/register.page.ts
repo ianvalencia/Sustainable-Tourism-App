@@ -13,13 +13,20 @@ import { UserService } from 'src/app/user.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
+  showPassword = false;
   fname = '';
   email = '';
   password = '';
   cpassword = '';
 
-  constructor(private router: Router, public AfAuth: AngularFireAuth, public alert: AlertController, public afstore: AngularFirestore, public user: UserService, public alertController: AlertController) { }
+  constructor(
+    private router: Router,
+    public AfAuth: AngularFireAuth,
+    public alert: AlertController,
+    public afstore: AngularFirestore,
+    public user: UserService,
+    public alertController: AlertController
+  ) { }
 
   ngOnInit() {
   }
@@ -35,12 +42,7 @@ export class RegisterPage implements OnInit {
 
 
   async onSubmit() {
-    const{ fname, email, password, cpassword } = this;
-    if (password !== cpassword) {
-      this.showAlert('Error!', 'Passwords do not match');
-      return console.error('Passwords do not match');
-    }
-
+    const{ fname, email, password } = this;
     try {
       const res = await this.AfAuth.auth.createUserWithEmailAndPassword(email, password);
 
@@ -83,6 +85,10 @@ export class RegisterPage implements OnInit {
 
     await alert.present();
 
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
 }

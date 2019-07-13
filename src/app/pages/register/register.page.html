@@ -1,61 +1,55 @@
 <!-- -->
 <ion-content>
   <div class="register-content">
-
-    <!-- Logo -->
-    <div class="title">
-      <h2 ion-text class="text-primary">
-        Create Account
-      </h2>
-    </div>
-
+    <ion-text class="ion-text-capitalize ion-margin-vertical h2">Sign Up.</ion-text>
     <!-- Login form -->
-    <form class="sections">
-        <ion-item>
-          <ion-label position="floating">
-            <ion-icon name="contact" slot="start" class="text-primary"></ion-icon>
+    <form>
+      <ion-list mode="md">
+        <ion-item mode="md">
+          <ion-label mode="md" position="floating">
             Full Name
           </ion-label>
           <ion-input type="text" [(ngModel)]="fname" [ngModelOptions]="{standalone: true}"></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">
-            <ion-icon name="mail" slot="start" class="text-primary"></ion-icon>
+        <ion-item mode="md">
+          <ion-label mode="md" position="floating">
             Email
           </ion-label>
           <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>
         </ion-item>
   
-        <ion-item>
-          <ion-label position="floating">
-            <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+        <ion-item mode="md">
+          <ion-label mode="md" position="floating">
+            <!-- <ion-icon name="lock" item-start class="text-primary"></ion-icon> -->
             Password
           </ion-label>
-          <ion-input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
+          <ion-input [type]="showPassword?'string':'password'" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
+          <ion-buttons mode="md" slot="end">
+            <ion-button (click)="togglePassword()">
+              <ion-icon [name]="showPassword?'eye-off':'eye'" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
         </ion-item>
+      </ion-list>
 
-        <ion-item>
-          <ion-label position="floating">
-            <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-            Confirm Password
-          </ion-label>
-          <ion-input type="password" [(ngModel)]="cpassword" [ngModelOptions]="{standalone: true}"></ion-input>
-        </ion-item>
+      <!-- <ion-item id="terms" lines="none">
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>
+          Agree to 
+          <ion-text color="inverted-primary" class="text-button">Terms</ion-text>
+           and 
+          <ion-text color="inverted-primary" class="text-button">Privacy Policy</ion-text>
+        </ion-label>
+      </ion-item> -->
 
-        <div id="terms">
-          <ion-checkbox id="terms-checkbox"></ion-checkbox>
-          <ion-label>
-            Agree to Terms and Privacy Policy
-          </ion-label>
-        </div>
-
-        <ion-button class="btn-signin" expand="block" (click)="onSubmit()">SIGN UP</ion-button>
+        
       </form>
 
-      <div class="sections">
-        <hr class="hr-text" data-content="OR">
-        <ion-button class="btn-signin" expand="block" (click)="onGoogleSignUp()" fill="outline" color="danger">
+      <div class="flex-center">
+        <ion-button class="btn-signin" color="inverted-primary" (click)="onSubmit()">SIGN UP</ion-button>
+        <app-text-divider></app-text-divider>
+        <ion-button class="btn-signin" color="inverted-primary" (click)="onGoogleSignUp()" fill="outline">
           <ion-icon name="logo-google" slot="start"></ion-icon>
           SIGN UP WITH GOOGLE
         </ion-button>
@@ -66,7 +60,7 @@
     <!-- Other links -->
     <div text-center class="sections" id="signin">
       Already have an account?
-      <ion-text color="primary" (click)="onSwitch()"><strong>Sign In</strong></ion-text>
+      <ion-text class="text-button" color="inverted-primary" (click)="onSwitch()">Sign In</ion-text>
     </div>
 
   </div>

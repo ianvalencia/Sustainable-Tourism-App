@@ -11,7 +11,7 @@ import { UserService } from 'src/app/user.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  showPassword = false;
   fname = '';
   email = '';
   password = '';
@@ -103,4 +103,8 @@ export class LoginPage implements OnInit {
     });
     await forgot.present();
   }
-}
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+ }

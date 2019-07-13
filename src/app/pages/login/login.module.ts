@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPage } from './login.page';
-import { TextDividerComponent } from 'src/app/components/text-divider/text-divider.component';
+import { CustomComponentsModule } from 'src/app/components/custom-components/custom-components.module';
 
 const routes: Routes = [
   {
@@ -20,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    CustomComponentsModule
   ],
-  declarations: [LoginPage, TextDividerComponent]
+  declarations: [LoginPage]
 })
 export class LoginPageModule {}
