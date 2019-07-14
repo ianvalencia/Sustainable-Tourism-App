@@ -20,7 +20,7 @@ export class ActivityDetailsPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private ActService: ActivitiesService,
     private favoritesService: FavoritesService,
-    private modalCtrl: ModalController,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {

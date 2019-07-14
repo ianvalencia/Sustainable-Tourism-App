@@ -20,7 +20,8 @@ export class BookingsService {
       contactDetails: '09123456789',
       schedule: 'July 24-26, 2019',
       capacity: 50,
-      claimed: 22
+      claimed: 22,
+      aid: 'a1'
     },
     {
       id: 'b2',
@@ -35,7 +36,8 @@ export class BookingsService {
       contactDetails: '09123456789',
       schedule: 'July 24-26, 2019',
       capacity: 50,
-      claimed: 22
+      claimed: 22,
+      aid: 'a2'
     },
   ];
 

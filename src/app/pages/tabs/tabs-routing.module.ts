@@ -22,10 +22,6 @@ const routes: Routes = [
               {
                 path: '',
                 loadChildren: '../categorypage/categorypage.module#CategorypagePageModule'
-              },
-              {
-                path: ':actId',
-                loadChildren: '../categorypage/activity-detail/activity-detail.module#ActivityDetailPageModule'
               }
             ]
           }

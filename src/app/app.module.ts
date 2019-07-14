@@ -13,6 +13,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './user.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -27,6 +28,7 @@ import { IonicStorageModule } from '@ionic/storage';
     AngularFireAuthModule,
     AngularFirestoreModule,
     IonicStorageModule.forRoot(),
+    QRCodeModule
   ],
   providers: [
     StatusBar,

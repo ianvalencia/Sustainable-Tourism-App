@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/app/interfaces/activity';
-import { ActivitiesService } from 'src/app/services/activities.service'
+import { ActivitiesService } from 'src/app/services/activities.service';
 
 @Component({
   selector: 'app-categorypage',
