@@ -41,7 +41,9 @@ const routes: Routes = [
     path: 'activity-details/:id',
     loadChildren: './pages/activity-details/activity-details.module#ActivityDetailsPageModule'
   },
-  { path: 'title', loadChildren: './pages/title/title.module#TitlePageModule' },
+  { path: 'title',
+    loadChildren: './pages/title/title.module#TitlePageModule'
+  },
 ];
 
 @NgModule({

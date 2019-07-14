@@ -3,33 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/bookings" mode="md"></ion-back-button>
     </ion-buttons>
+    <ion-title>Booking Summary</ion-title>
   </ion-toolbar>
-  <ion-slides pager="true">
-    <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
-    </ion-slide>
-    <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
-    </ion-slide>
-    <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
-    </ion-slide>
-  </ion-slides>
 </ion-header>
 
 <ion-content>
-    <ion-fab vertical="top" horizontal="end" edge slot="fixed">
-      <ion-fab-button color="light">
-        <ion-icon name="heart" color="primary"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    <div class="subsection-container" id="title">
-      <ion-text>{{ booking.provider }} | {{ booking.activityType }}</ion-text>
-      <ion-text>{{ booking.name }}</ion-text>
-      <ion-text>{{ booking.price | currency:'PHP' }} | {{ booking.location }}</ion-text>
-    </div>
+  
 
 </ion-content>
