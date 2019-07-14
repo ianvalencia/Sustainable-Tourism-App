@@ -1,16 +1,22 @@
-<ion-card color="primary" [routerLink]="['/activity-details', activity.id]">
-  <div class="activity-overlay" [ngStyle]="{'background': 'linear-gradient(transparent, transparent, rgba(0,0,0, 0.5)), url(' + activity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
-    <div class="activity-subtitle">{{ activity.provider }}</div>
-    <div class="activity-title">{{ activity.name }}</div>
-  </div>
-  <div class="activity-footer">
-    <div>
-      <ion-icon name="star"></ion-icon>
-      <ion-text>  {{ activity.rating | number:'.2-2' }}/5.00</ion-text>
+<ion-card mode="ios" [routerLink]="['/activity-details', activity.id]">
+  <div class="card-background" [ngStyle]="{'background': 'linear-gradient(rgba(0,0,0, 0.5), transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + activity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
+    <div class="lower-left">
+      <ion-text class="h5">{{ activity.name }}</ion-text>
+      <ion-text class="subtitle-1">{{ activity.schedule }} | ₱ {{ activity.price | number:'.2-2' }}</ion-text>
     </div>
-    <div>
-      <ion-icon name="cash"></ion-icon>
-      <ion-text>  {{ activity.price | currency:'PHP' }}</ion-text>
+
+    <div class="upper-left">
+      <ion-text class="h6">
+        <ion-icon class="center-inline" name="pin"></ion-icon>
+        <span class="center-inline"> {{ activity.location }}</span>
+      </ion-text>
+    </div>
+
+    <div class="upper-right">
+      <ion-text class="h6">
+        <ion-icon class="center-inline" name="star"></ion-icon>
+        <span class="center-inline" >{{ activity.rating | number:'.2-2' }}</span>
+      </ion-text>
     </div>
   </div>
 </ion-card>

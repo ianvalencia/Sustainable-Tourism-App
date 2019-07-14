@@ -1,0 +1,42 @@
+<ion-card mode="ios" [routerLink]="['/booking-details', booking.id]">
+  <!-- <div class="card-background" [ngStyle]="{'background': 'linear-gradient(rgba(0,0,0, 0.5), transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + booking.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
+    <div class="lower-left">
+      <ion-text class="h5">{{ booking.name }}</ion-text>
+      <ion-text class="subtitle-1">{{ booking.schedule }} | ₱ {{ booking.price | number:'.2-2' }}</ion-text>
+    </div>
+
+    <div class="upper-left">
+      <ion-text class="h6">
+        <ion-icon class="center-inline" name="pin"></ion-icon>
+        <span class="center-inline"> {{ booking.location }}</span>
+      </ion-text>
+    </div>
+
+    <div class="upper-right">
+      <ion-text class="h6">
+        <ion-icon class="center-inline" name="star"></ion-icon>
+        <span class="center-inline" >{{ booking.rating | number:'.2-2' }}</span>
+      </ion-text>
+    </div>
+  </div> -->
+  <div class="card-content">  
+    <div class="upper-left">
+      <ion-text class="subtitle-1">
+        <ion-icon class="center-inline" name="pin"></ion-icon>
+        <span class="center-inline"> {{ booking.location }}</span>
+      </ion-text>
+      <ion-text class="h5">
+        {{ (booking.name.length > maxNameLength) ? (booking.name | slice:0:maxNameLength )+'...' : booking.name }}
+      </ion-text>
+      <ion-text class="subtitle-1">{{ booking.schedule }} | ₱ {{ booking.price | number:'.2-2' }}</ion-text>
+
+    </div>
+  </div>
+  <div class="thumbnail-container">
+      <div class="card-thumbnail" [ngStyle]="{'background': 'url(' + booking.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">  
+      </div>
+  </div>
+  <!-- <div class="lower-left">
+    TAE
+  </div> -->
+</ion-card>

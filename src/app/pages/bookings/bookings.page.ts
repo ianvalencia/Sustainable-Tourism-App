@@ -22,4 +22,8 @@ export class BookingsPage implements OnInit {
   ngOnInit() {
     this.bookings = this.bookingsService.bookings;
   }
+
+  segmentChanged(ev: any) {
+    console.log(ev.detail);
+  }
 }

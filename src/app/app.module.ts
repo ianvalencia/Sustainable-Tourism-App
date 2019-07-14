@@ -15,7 +15,6 @@ import { UserService } from './user.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { IonicStorageModule } from '@ionic/storage';
-import { CustomComponentsModule } from './components/custom-components/custom-components.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +27,6 @@ import { CustomComponentsModule } from './components/custom-components/custom-co
     AngularFireAuthModule,
     AngularFirestoreModule,
     IonicStorageModule.forRoot(),
-    CustomComponentsModule
   ],
   providers: [
     StatusBar,

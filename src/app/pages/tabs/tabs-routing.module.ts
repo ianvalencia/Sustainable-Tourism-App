@@ -36,10 +36,6 @@ const routes: Routes = [
         loadChildren: '../offers/offers.module#OffersPageModule'
       },
       {
-        path: 'chats',
-        loadChildren: '../chats/chats.module#ChatsPageModule'
-      },
-      {
         path: 'bookings',
         loadChildren: '../bookings/bookings.module#BookingsPageModule'
       },

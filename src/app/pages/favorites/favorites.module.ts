@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { FavoritesPage } from './favorites.page';
-import { ActivityCardComponent } from 'src/app/components/activity-card/activity-card.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const routes: Routes = [
   {
@@ -20,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ComponentsModule
   ],
-  declarations: [FavoritesPage, ActivityCardComponent]
+  declarations: [FavoritesPage]
 })
 export class FavoritesPageModule {}

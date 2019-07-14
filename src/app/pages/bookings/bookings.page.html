@@ -8,28 +8,29 @@
 </ion-header>
 
 <ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" value="pay">
+    <ion-segment-button value="pay">
+      <ion-label>To Pay</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="claim">
+      <ion-label>To Claim</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="rate">
+      <ion-label>To Rate</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
   <div id="bookings-container" *ngIf="isBookingsEmpty()">
     <ion-text>
       No activities booked
     </ion-text>
   </div>
-  <div *ngIf="!isBookingsEmpty()">
-    <ion-card *ngFor="let booking of bookings" color="primary" [routerLink]="['/', 'booking-details', booking.id]">
-      <div class="booking-overlay" [ngStyle]="{'background-image': 'url(' + booking.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
-        <div class="booking-subtitle">{{ booking.provider }}</div>
-        <div class="booking-title">{{ booking.name }}</div>
-      </div>
-      <div class="booking-footer">
-        <div>
-          <ion-icon name="star"></ion-icon>
-          <ion-text>  {{ booking.rating | number:'.2-2' }}/5.00</ion-text>
-        </div>
-        <div>
-          <ion-icon name="cash"></ion-icon>
-          <ion-text>  {{ booking.price | currency:'PHP' }}</ion-text>
-        </div>
-      </div>
-    </ion-card>
-  </div>
+
+  <ion-virtual-scroll *ngIf="!isBookingsEmpty()" [items]="bookings" [approxItemHeight]="0">
+    <div *virtualItem="let item">
+      <app-booking-card [booking]="item"></app-booking-card>
+    </div>
+  </ion-virtual-scroll>
+  <!-- <app-booking-card *ngFor="let booking of bookings" [booking]="booking"></app-booking-card> -->
     
 </ion-content>
