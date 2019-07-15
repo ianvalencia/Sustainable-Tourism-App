@@ -10,12 +10,56 @@ const routes: Routes = [
   },
   {
     path: 'app',
-    loadChildren: './pages/tabs/tabs.module#TabsPageModule'
+    children: [
+      {
+        path: '',
+        loadChildren: './pages/tabs/tabs.module#TabsPageModule',
+      },
+      {
+        path: 'profile',
+        loadChildren: './pages/profile/profile.module#ProfilePageModule'
+      },
+      {
+        path: 'favorites',
+        loadChildren: './pages/favorites/favorites.module#FavoritesPageModule'
+      },
+      {
+        path: 'booking-details',
+        children: [
+          {
+            path: ':id',
+            loadChildren: './pages/booking-details/booking-details.module#BookingDetailsPageModule'
+          },
+          {
+            path: '',
+            redirectTo: '/app/tabs/bookings',
+            pathMatch: 'full'
+          }
+        ]
+      },
+      {
+        path: 'activity-details',
+        children: [
+          {
+            path: ':id',
+            loadChildren: './pages/activity-details/activity-details.module#ActivityDetailsPageModule'
+          },
+          {
+            path: '',
+            redirectTo: '/app/tabs/discover',
+            pathMatch: 'full'
+          }
+        ]
+      },
+    ]
   },
   {
     path: 'onboarding',
     loadChildren: './pages/onboarding/onboarding.module#OnboardingPageModule',
     canLoad: [OnboardingGuard]
+  },
+  { path: 'title',
+    loadChildren: './pages/title/title.module#TitlePageModule'
   },
   {
     path: 'login',
@@ -24,26 +68,7 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: './pages/register/register.module#RegisterPageModule'
-  },
-  {
-    path: 'profile',
-    loadChildren: './pages/profile/profile.module#ProfilePageModule'
-  },
-  {
-    path: 'favorites',
-    loadChildren: './pages/favorites/favorites.module#FavoritesPageModule'
-  },
-  {
-    path: 'booking-details/:id',
-    loadChildren: './pages/booking-details/booking-details.module#BookingDetailsPageModule'
-  },
-  {
-    path: 'activity-details/:id',
-    loadChildren: './pages/activity-details/activity-details.module#ActivityDetailsPageModule'
-  },
-  { path: 'title',
-    loadChildren: './pages/title/title.module#TitlePageModule'
-  },
+  }
 ];
 
 @NgModule({
