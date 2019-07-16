@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/app/interfaces/activity';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { BookingsService } from 'src/app/services/bookings.service';
 
@@ -10,9 +10,14 @@ import { BookingsService } from 'src/app/services/bookings.service';
   styleUrls: ['./booking-details.page.scss'],
 })
 export class BookingDetailsPage implements OnInit {
-  booking: Activity;
+  booking;
 
-  constructor(private route: ActivatedRoute, private navCtrl: NavController, private bookingsService: BookingsService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private navCtrl: NavController,
+    private bookingsService: BookingsService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
@@ -22,5 +27,9 @@ export class BookingDetailsPage implements OnInit {
       this.booking = this.bookingsService.getBooking(paramMap.get('id'));
 
     });
+  }
+
+  onSeeMore() {
+    this.router.navigate(['/activity-details', this.booking.aid ])
   }
 }

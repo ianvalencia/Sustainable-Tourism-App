@@ -1,46 +1,7 @@
-.booking-overlay {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 12em;
-  // position: absolute;
-  z-index: 99;
-  bottom: 0px;
-  opacity: 1;
-  background: rgba(0, 0, 0, 0);
-  color: #fff;
-  padding: 0.75em;
-  justify-content: flex-end;
-  align-items: baseline;
+ion-content {
+  --background: #f2f2f2;
 }
 
-.booking-title {
-  font-size: 1.5em;
-  font-weight: 900;
-}
-
-.booking-subtitle {
-  font-size: 1em;
-  font-weight: 900;
-  // background: rgba(0, 0, 0, 0.5);
-}
-
-.booking-header {
-  height: 150px;
-  background-color: red;
-}
-
-.booking-footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  font-weight: 500;
-}
-
-#bookings-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.virtual-item {
+  margin: 1em !important;
 }

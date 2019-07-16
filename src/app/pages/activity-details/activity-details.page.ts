@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ActivitiesService } from 'src/app/services/activities.service';
+import { ModalController } from '@ionic/angular';
+
 import { Activity } from 'src/app/interfaces/activity';
+
+import { ActivitiesService } from 'src/app/services/activities.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
+import { CheckoutComponent } from 'src/app/components/checkout/checkout.component';
 
 @Component({
   selector: 'app-activity-details',
@@ -12,7 +16,12 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 export class ActivityDetailsPage implements OnInit {
   loadedActivity: Activity;
 
-  constructor(private activatedRoute: ActivatedRoute, private ActService: ActivitiesService, private favoritesService: FavoritesService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private ActService: ActivitiesService,
+    private favoritesService: FavoritesService,
+    private modalCtrl: ModalController
+  ) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -30,8 +39,27 @@ export class ActivityDetailsPage implements OnInit {
     this.favoritesService.loadFavorites();
   }
 
-  onFavorite() {
+  isFavorite() {
     return this.favoritesService.checkIfFavorite(this.loadedActivity.id);
+  }
+
+  onBookActivity() {
+    this.modalCtrl
+      .create({
+        component: CheckoutComponent,
+        componentProps: {
+          selectedActivity: this.loadedActivity
+        }
+      })
+      .then(modalEl => {
+        modalEl.present();
+        return modalEl.onDidDismiss();
+      })
+      .then(resultData => {
+        if (resultData.role === 'book') {
+          console.log(resultData.data.bookingData);
+        }
+      });
   }
 
 }

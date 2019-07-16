@@ -11,22 +11,22 @@
 @import '~@ionic/angular/css/flex-utils.css';
 
 .h1 {
-  font-weight: 500;
+  font-weight: 800;
   font-size: 3.815em;
 }
 
 .h2 {
-  font-weight: 500;
+  font-weight: 800;
   font-size: 3.052em;
 }
 
 .h3 {
-  font-weight: 600;
+  font-weight: 800;
   font-size: 2.441em;
 }
 
 .h4 {
-  font-weight: 600;
+  font-weight: 800;
   font-size: 1.953em;
 }
 
@@ -55,4 +55,33 @@
   font-size: 1em;
 }
 
+.ion-color-inverted-primary {
+  --ion-color-base: #ffffff;
+  --ion-color-base-rgb: 255,255,255;
+  --ion-color-contrast: #7ECF7E;
+  --ion-color-contrast-rgb: 126,207,126;
+  --ion-color-shade: #e0e0e0;
+  --ion-color-tint: #ffffff;
+  // --ion-color-base: #69bb7b;
+  // --ion-color-base-rgb: 105,187,123;
+  // --ion-color-contrast: #ffffff;
+  // --ion-color-contrast-rgb: 255,255,255;
+  // --ion-color-shade: #5ca56c;
+  // --ion-color-tint: #78c288;
+}
 
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.test-scope {
+  background: red;
+}
+
+.center-inline {
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -4,12 +4,12 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #61CC98;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary: #7ECF7E;
+  --ion-color-primary-rgb: 126,207,126;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #05bc8d;
-  --ion-color-primary-tint: #1fdaaa;
+  --ion-color-primary-shade: #6fb66f;
+  --ion-color-primary-tint: #8bd48b;
 
   /** secondary **/
   --ion-color-secondary: #4ecdc4;
@@ -74,6 +74,14 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-color-inverted-primary: #ffffff;
+  --ion-color-inverted-primary-rgb: 255,255,255;
+  --ion-color-inverted-primary-contrast: #7ECF7E;
+  --ion-color-inverted-primary-contrast-rgb: 126,207,126;
+  --ion-color-inverted-primary-shade: #e0e0e0;
+  --ion-color-inverted-primary-tint: #ffffff;
+
 
   --ion-font-family: 'San Francisco Display';
 }

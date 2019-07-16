@@ -3,33 +3,69 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/bookings" mode="md"></ion-back-button>
     </ion-buttons>
+    <ion-title>Booking Summary</ion-title>
   </ion-toolbar>
-  <ion-slides pager="true">
-    <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
-    </ion-slide>
-    <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
-    </ion-slide>
-    <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="booking.imgUrl"></ion-img>
-    </ion-slide>
-  </ion-slides>
 </ion-header>
 
-<ion-content>
-    <ion-fab vertical="top" horizontal="end" edge slot="fixed">
-      <ion-fab-button color="light">
-        <ion-icon name="heart" color="primary"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    <div class="subsection-container" id="title">
-      <ion-text>{{ booking.provider }} | {{ booking.activityType }}</ion-text>
-      <ion-text>{{ booking.name }}</ion-text>
-      <ion-text>{{ booking.price | currency:'PHP' }} | {{ booking.location }}</ion-text>
-    </div>
+<ion-content padding>
+  <div class="ticket"> 
+    <div class="top flex-column">
+      <span class="buy">
+        <ion-text>E-TICKET</ion-text>
+      </span>
 
+      <br>
+
+      <div class="h6">
+        <ion-text class="center-inline">{{ booking.name }}</ion-text>
+        <ion-icon class="center-inline" name="help-circle-outline" (click)="onSeeMore()"></ion-icon>
+      </div>
+
+      <div class="subtitle-1">
+        <ion-icon name="pin" class="center-inline"></ion-icon>
+        <ion-text class="center-inline">{{ booking.location }}</ion-text>
+      </div>
+
+      <br>
+
+      <div class="deetz-row flex-row">
+          <div class="item flex-column">
+            <div class="header">Start Date</div>
+            <div class="data">July 15, 2019</div>
+          </div>
+
+          <div class="item flex-column">
+            <div class="header">Duration</div>
+            <div class="data">3 Days</div>
+          </div> 
+       </div> 
+
+       <div class="deetz-row flex-row">
+          <div class="item flex-column">
+            <div class="header">Traveler(s)</div>
+            <div class="data">Juan Dela Cruz + 2 persons</div>
+          </div>
+
+          <div class="item flex-column">
+            <div class="header">Price</div>
+            <div class="data">₱ {{ booking.price | number:'.2-2' }}</div>
+          </div> 
+       </div> 
+
+       <div class="ion-text-center"><small>Terms & Conditions Apply</small></div>
+       <div class="ion-text-center"><small>www.bridge360.com.ph</small></div>
+    </div>
+    <div class="rip"></div>
+    <div class="bottom">
+      <!-- <div class="h6">
+        <ion-text class="center-inline">{{ booking.name }}</ion-text>
+        <ion-icon class="center-inline" name="help-circle-outline" (click)="onSeeMore()"></ion-icon>
+      </div> -->
+      <div class="flex-row ion-justify-content-center">
+        <qrcode [qrdata]="booking.id" [size]="128"></qrcode>
+      </div>
+      
+    </div>
+    <br>
+ </div>
 </ion-content>

@@ -19,7 +19,17 @@ export class AppComponent {
     {
       icon: 'heart',
       label: 'My Favorites',
-      link: '/favorites'
+      link: '/app/favorites'
+    },
+    {
+      icon: 'compass',
+      label: 'Discover',
+      link: '/app/tabs/discover'
+    },
+    {
+      icon: 'calendar',
+      label: 'My Bookings',
+      link: '/app/tabs/bookings'
     },
   ];
 

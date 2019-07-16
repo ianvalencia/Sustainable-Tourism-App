@@ -1,0 +1,19 @@
+<ion-card mode="ios" [routerLink]="['/app/booking-details', booking.id]">
+  <div class="card-content">  
+    <div class="upper-left">
+      <ion-text class="subtitle-1">
+        <ion-icon class="center-inline" name="pin"></ion-icon>
+        <span class="center-inline"> {{ booking.location }}</span>
+      </ion-text>
+      <ion-text class="h5">
+        {{ (booking.name.length > maxNameLength) ? (booking.name | slice:0:maxNameLength )+'...' : booking.name }}
+      </ion-text>
+      <ion-text class="subtitle-1">{{ booking.schedule }} | ₱ {{ booking.price | number:'.2-2' }}</ion-text>
+
+    </div>
+  </div>
+  <div class="thumbnail-container">
+      <div class="card-thumbnail" [ngStyle]="{'background': 'url(' + booking.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">  
+      </div>
+  </div>
+</ion-card>

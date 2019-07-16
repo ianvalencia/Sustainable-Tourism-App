@@ -44,3 +44,15 @@
   align-items: center;
   height: 100%;
 }
+
+.transparent-gradient {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: red;
+  //background: linear-gradient(rgba(0,0,0, 0.5), 10%, transparent, transparent, transparent);
+}
+
+.virtual-item {
+  margin: 1em !important;
+}

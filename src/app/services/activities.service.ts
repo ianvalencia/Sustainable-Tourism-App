@@ -18,7 +18,9 @@ export class ActivitiesService {
       imgUrl: 'https://www.travelwyoming.com/sites/default/files/uploads/consumer/7-18_MedicineBowHikingFishing_KL_0708_3298.jpg',
       rating: 5.0,
       contactDetails: '09123456789',
-      schedule: 'July 24-26, 2019'
+      schedule: 'July 24-26, 2019',
+      capacity: 50,
+      claimed: 22
     },
     {
       id: 'a2',
@@ -31,7 +33,9 @@ export class ActivitiesService {
       imgUrl: 'https://www.divein.com/wp-content/uploads/image-archive/img/skin-diving-on-reef.jpg',
       rating: 5.0,
       contactDetails: '09123456789',
-      schedule: 'July 24-26, 2019'
+      schedule: 'July 24-26, 2019',
+      capacity: 50,
+      claimed: 22
     },
     {
       id: 'a3',
@@ -44,7 +48,9 @@ export class ActivitiesService {
       imgUrl: 'https://www.audubon.org/sites/default/files/web_strawberry-plain_camillacerea-1-of-1.jpg',
       rating: 5.0,
       contactDetails: '09123456789',
-      schedule: 'July 24-26, 2019'
+      schedule: 'July 24-26, 2019',
+      capacity: 50,
+      claimed: 22
     },
     {
       id: 'a4',
@@ -57,7 +63,9 @@ export class ActivitiesService {
       imgUrl: 'https://yaffa-cdn.s3.amazonaws.com/yaffadsp/images/dmImage/StandardImage/Ortlieb-4.jpg',
       rating: 5.0,
       contactDetails: '09123456789',
-      schedule: 'July 24-26, 2019'
+      schedule: 'July 24-26, 2019',
+      capacity: 50,
+      claimed: 22
     },
   ];
 

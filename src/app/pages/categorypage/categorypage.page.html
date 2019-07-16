@@ -3,26 +3,15 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/discover"></ion-back-button>
     </ion-buttons>
-    <ion-title>Bike Packing</ion-title>
+    <ion-title>Activities</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-searchbar placeholder="Search for a destination or activity"></ion-searchbar>
-  <ion-card *ngFor="let activity of activities" color="primary" [routerLink]="['/', 'activity-details', activity.id]">
-    <div class="activity-overlay" [ngStyle]="{'background-image': 'url(' + activity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
-      <div class="activity-subtitle">{{ activity.provider }}</div>
-      <div class="activity-title">{{ activity.name }}</div>
+  <ion-virtual-scroll [items]="activities" [approxFooterHeight]="0" [approxHeaderHeight]="0" [approxItemHeight]="0">
+    <div *virtualItem="let item">
+      <app-activity-card [activity]="item"></app-activity-card>
     </div>
-    <div class="activity-footer">
-      <div>
-        <ion-icon name="star"></ion-icon>
-        <ion-text>  {{ activity.rating | number:'.2-2' }}/5.00</ion-text>
-      </div>
-      <div>
-        <ion-icon name="cash"></ion-icon>
-        <ion-text>  {{ activity.price | currency:'PHP' }}</ion-text>
-      </div>
-    </div>
-  </ion-card>
+  </ion-virtual-scroll>
 </ion-content>

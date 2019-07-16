@@ -1,26 +1,30 @@
 <ion-app>
   <ion-menu side="start">
-    <ion-content color="primary">
+    <ion-content>
       <div id="menu-header">
         <ion-avatar>
-            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            <img [src]="'assets/icon/favicon.png'">
         </ion-avatar>
-        <ion-text>Juan Dela Cruz</ion-text>
+        <ion-text class="h6 ion-padding-top">Juan Dela Cruz</ion-text>
+        <ion-text class="subtitle-1 ion-padding-top">Tourist</ion-text>
       </div>
-      <ion-list color="primary" id="menu-list">
-        <ion-menu-toggle *ngFor="let item of menuItems">
-          <ion-item lines="none" class="menu-items" [routerLink]="item.link" color="primary">
-            <ion-icon [name]="item.icon" slot="start"></ion-icon>
-            <ion-label>{{ item.label }}</ion-label>
-          </ion-item>            
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item lines="none" (click)="onLogout()" button color="primary">
-            <ion-icon name="exit" slot="start"></ion-icon>
-            <ion-label>Logout</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-      </ion-list>
+      <div class="ion-padding">
+        <ion-list class="ion-padding" id="menu-list">
+          <ion-menu-toggle *ngFor="let item of menuItems">
+            <ion-item mode="md" lines="none" class="menu-items" [routerLink]="item.link">
+              <ion-icon [name]="item.icon" slot="start"></ion-icon>
+              <ion-label>{{ item.label }}</ion-label>
+            </ion-item>            
+          </ion-menu-toggle>
+          <div id="menu-divider"></div>
+          <ion-menu-toggle>
+            <ion-item mode="md" lines="none" (click)="onLogout()" button>
+              <ion-icon name="exit" slot="start"></ion-icon>
+              <ion-label>Logout</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </div>
     </ion-content>
   </ion-menu>
   <ion-router-outlet main></ion-router-outlet>

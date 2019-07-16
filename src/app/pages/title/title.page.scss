@@ -1,0 +1,52 @@
+ion-content {
+  --background: linear-gradient(#9DD8EC, 50%, #7ECF7E);
+  --color: #0B485A;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-button {
+  --border-radius: 5em;
+  //width: 20em;
+  height: 3.5em;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.078125em;
+  align-self: stretch;
+  margin: 0 1em;
+}
+
+#logo {
+  max-width: 50%;
+}
+
+.subcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+#text-on-hr {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+#hr-text {
+  display: flex;
+  // flex-grow: 1;
+  justify-content: center;
+  margin: 0.75em;
+}
+
+.hr-line {
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-grow: 1;
+  height: 2px
+}

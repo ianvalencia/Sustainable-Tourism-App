@@ -22,10 +22,6 @@ const routes: Routes = [
               {
                 path: '',
                 loadChildren: '../categorypage/categorypage.module#CategorypagePageModule'
-              },
-              {
-                path: ':actId',
-                loadChildren: '../categorypage/activity-detail/activity-detail.module#ActivityDetailPageModule'
               }
             ]
           }
@@ -34,10 +30,6 @@ const routes: Routes = [
       {
         path: 'offers',
         loadChildren: '../offers/offers.module#OffersPageModule'
-      },
-      {
-        path: 'chats',
-        loadChildren: '../chats/chats.module#ChatsPageModule'
       },
       {
         path: 'bookings',
