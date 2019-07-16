@@ -6,7 +6,7 @@ import { ActivitiesService } from './activities.service';
   providedIn: 'root'
 })
 export class FavoritesService {
-  private favoritesId = ['a1', 'a3'];
+  private favoritesId: string[] = ['a1', 'a3'];
   private _favorites = [];
 
   constructor(private activitiesService: ActivitiesService) { 
@@ -22,8 +22,8 @@ export class FavoritesService {
   }
 
   loadFavorites() {
-    this._favorites = this.activitiesService.getActivities().filter((item) => {
-      return this.favoritesId.includes(item.id);
+    this._favorites = this.favoritesId.map(id => {
+      return this.activitiesService.getActivity(id);
     });
   }
 

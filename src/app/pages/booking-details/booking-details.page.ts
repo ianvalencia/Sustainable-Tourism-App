@@ -30,6 +30,6 @@ export class BookingDetailsPage implements OnInit {
   }
 
   onSeeMore() {
-    this.router.navigate(['/activity-details', this.booking.aid ])
+    this.router.navigate(['/app/activity-details', this.booking.aid ])
   }
 }

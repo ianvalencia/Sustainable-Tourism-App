@@ -5,14 +5,63 @@
     </ion-buttons>
     <ion-title>Discover</ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      mode="ios"
+      placeholder="Search for a destination or activity"
+      [formControl]="searchControl"
+      (ionChange)="onSearchInput()"
+    ></ion-searchbar>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon name="funnel" slot="icon-only" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar placeholder="Search for a destination or activity"></ion-searchbar>
-  <ion-card *ngFor="let category of categories" (click)="skip()">
-      <ion-img src={{category.imageUrl}}></ion-img>
-      <div class="category-overlay">
-        <div class="category-title">{{ category.categoryName }}</div>
+  <!-- <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div class="fullscreen" *ngIf="!searching" >
+    <div class="empty-container text-only"*ngIf="isActivitiesEmpty">
+      <ion-text class="h6">
+        No results found
+      </ion-text>
+      <ion-text class="subtitle-1">
+          Nothing came up for that search.
+        </ion-text>
+    </div>
+
+    <ion-virtual-scroll *ngIf="!isActivitiesEmpty" [items]="activities" [approxFooterHeight]="0" [approxHeaderHeight]="0" [approxItemHeight]="0">
+      <div *virtualItem="let item">
+        <app-activity-card [activity]="item"></app-activity-card>
       </div>
-  </ion-card>
+    </ion-virtual-scroll>
+  </div> -->
+  <div class="flex-container">
+    <div *ngIf="searching" class="inner-flex-container absolute-center">
+      <ion-spinner></ion-spinner>
+    </div>
+    <div *ngIf="!searching" class="inner-flex-container">
+      <!-- <ion-virtual-scroll *ngIf="!isActivitiesEmpty" [items]="activities">
+        <div *virtualItem="let item">
+          <app-activity-card [activity]="item"></app-activity-card>
+        </div>
+      </ion-virtual-scroll> -->
+      <div class="inner-flex-container absolute-center" *ngIf="isActivitiesEmpty">
+        <ion-text class="h6">
+          No results found
+        </ion-text>
+        <ion-text class="subtitle-1">
+            Nothing came up for that search.
+          </ion-text>
+      </div>
+      <ion-list>
+        <app-activity-card *ngFor="let activity of activities" [activity]="activity"></app-activity-card>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

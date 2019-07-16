@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TextDividerComponent } from './text-divider/text-divider.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+
+import { TextDividerComponent } from './text-divider/text-divider.component';
 import { ActivityCardComponent } from './activity-card/activity-card.component';
 import { BookingCardComponent } from './booking-card/booking-card.component';
 

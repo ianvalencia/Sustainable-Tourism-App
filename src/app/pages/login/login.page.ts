@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import { ModalController, AlertController, ToastController } from '@ionic/angular';
+import { ModalController, AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { UserService } from 'src/app/user.service';
 
 @Component({
@@ -16,7 +16,14 @@ export class LoginPage implements OnInit {
   email = '';
   password = '';
 
-  constructor(private router: Router, private forgotCtrl: AlertController, private toastCtrl: ToastController, public AfAuth: AngularFireAuth, public user: UserService) { }
+  constructor(
+    private router: Router,
+    private forgotCtrl: AlertController,
+    private toastCtrl: ToastController,
+    public AfAuth: AngularFireAuth,
+    public user: UserService,
+    private loadingCtrl: LoadingController
+  ) { }
 
   async presentAlert(title: string, content: string) {
     const alert = await this.forgotCtrl.create({
@@ -32,30 +39,41 @@ export class LoginPage implements OnInit {
 
   async onSubmit() {
     const { fname, email, password } = this;
-    try {
-      const res = await this.AfAuth.auth.signInWithEmailAndPassword(email, password);
-      if (res.user) {
-        this.user.setUser({
-          // fname,
-          email,
-          uid: res.user.uid
-        });
+    this.loadingCtrl.create({
+      keyboardClose: true,
+      message: 'Logging in...'
+    })
+    .then(async loadingEl => {
+      loadingEl.present();
+      try {
+        const res = await this.AfAuth.auth.signInWithEmailAndPassword(email, password);
+        if (res.user) {
+          this.user.setUser({
+            // fname,
+            email,
+            uid: res.user.uid
+          });
+        }
+        this.router.navigateByUrl('/app/tabs/discover');
+        loadingEl.dismiss();
+      } catch (err) {
+        console.dir(err);
+        loadingEl.dismiss();
+        if (err.code === 'auth/invalid-email') {
+          this.presentAlert('Invalid Email!', err.message);
+        }
+        if (err.code === 'auth/wrong-password') {
+          this.presentAlert('Wrong password!', err.message);
+        }
+        if (err.code === 'auth/user-not-found') {
+          console.log('Error');
+          this.presentAlert(
+            'User Not Found!',
+            'The username and password you entered did not match our records. Please double-check and try again.'
+          );
+        }
       }
-      this.router.navigateByUrl('/app/tabs/discover');
-
-    } catch (err) {
-      console.dir(err);
-      if (err.code === 'auth/invalid-email') {
-        this.presentAlert('Invalid Email!', err.message);
-      }
-      if (err.code === 'auth/wrong-password') {
-        this.presentAlert('Wrong password!', err.message);
-      }
-      if (err.code === 'auth/user-not-found') {
-        console.log('Error');
-        this.presentAlert('User Not Found!', 'The username and password you entered did not match our records. Please double-check and try again.');
-      }
-    }
+    });
   }
 
   onGoogleSignIn() {

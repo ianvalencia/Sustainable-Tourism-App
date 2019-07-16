@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivitiesService } from 'src/app/services/activities.service';
 
 @Component({
   selector: 'app-booking-card',
@@ -7,10 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BookingCardComponent implements OnInit {
   @Input() booking;
+  activity;
+
   maxNameLength = 30;
 
-  constructor() { }
+  constructor(
+    private activitiesService: ActivitiesService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.activity = this.activitiesService.getActivity(this.booking.aid);
+    console.log(this.activity);
+  }
 
 }

@@ -13,11 +13,9 @@
 </ion-header>
 
 <ion-content>
-  <div id="offers-container">
-    <div *ngIf="isOffersEmpty()">
+  <div id="offers-container" *ngIf="isOffersEmpty()">
       <ion-text>
         No activities offered
       </ion-text>
-    </div>
   </div>
 </ion-content>

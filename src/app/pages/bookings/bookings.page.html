@@ -26,11 +26,13 @@
     </ion-text>
   </div>
 
-  <ion-virtual-scroll *ngIf="!isBookingsEmpty()" [items]="bookings" [approxItemHeight]="0">
+  <!-- <ion-virtual-scroll *ngIf="!isBookingsEmpty()" [items]="bookings" [approxItemHeight]="0">
     <div *virtualItem="let item">
       <app-booking-card [booking]="item"></app-booking-card>
     </div>
-  </ion-virtual-scroll>
-  <!-- <app-booking-card *ngFor="let booking of bookings" [booking]="booking"></app-booking-card> -->
+  </ion-virtual-scroll> -->
+  <ion-list *ngIf="!isBookingsEmpty()">
+    <app-booking-card *ngFor="let booking of bookings" [booking]="booking"></app-booking-card>
+  </ion-list>
     
 </ion-content>

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { ModalController, AlertController } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -8,31 +9,61 @@ import { ModalController } from '@ionic/angular';
 })
 export class CheckoutComponent implements OnInit {
   @Input() selectedActivity;
+  @ViewChild('booking') form: NgForm;
   quantity = 1;
   fullname: string;
   phoneNumber: number;
   email: string;
 
   constructor(
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {}
 
+  async onPressCancel() {
+    if (this.form.pristine) {
+      this.onCancel();
+    } else {
+      const alert = await this.alertCtrl.create({
+        header: 'Confirm',
+        message: 'Do you want to discard all changes?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+          }, {
+            text: 'Ok',
+            handler: () => {
+              this.onCancel();
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+    }
+  }
   onCancel() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
   onBook() {
+    if (!this.form.valid) {
+      return;
+    }
     this.modalCtrl.dismiss(
       {
         message: 'Booked is clicked!',
         bookingData: {
+          fullname: this.form.value['full-name'],
+          contactNumber: this.form.value['contact-number'],
+          email: this.form.value['email'],
           totalPayment: this.totalPayment,
           quantity: this.quantity,
-          fullname: this.fullname,
-          phoneNumber: this.phoneNumber,
-          email: this.email
+          activitySnapshot: this.selectedActivity
         }
       },
       'book'

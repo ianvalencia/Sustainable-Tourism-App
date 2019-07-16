@@ -2,60 +2,77 @@
   <ion-toolbar mode="ios">
     <ion-title>Checkout</ion-title>
     <ion-buttons slot="primary" mode="md">
-      <ion-button (click)="onCancel()">
+      <ion-button (click)="onPressCancel()">
         <ion-icon name="close" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <form>
-    <!-- <ion-item-divider>
-      <ion-label>Traveller's Information</ion-label>
-    </ion-item-divider> -->
+<ion-content padding >
+  <form (ngSubmit)="onBook()" #booking="ngForm">
     <ion-list-header mode="ios">Traveler's Information</ion-list-header>
     <div>
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Full Name</ion-label>
-        <ion-input></ion-input>
+        <ion-input 
+          type="text" 
+          ngModel 
+          name="full-name" 
+          required
+          autocapitalize
+        ></ion-input>
       </ion-item>
 
       <ion-item lines="none" mode="md">
-        <ion-label mode="md" position="floating">Phone Number</ion-label>
-        <ion-input></ion-input>
+        <ion-label mode="md" position="floating">Contact Number</ion-label>
+        <ion-input type="tel" ngModel name="contact-number" required></ion-input>
       </ion-item>
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Email Address</ion-label>
-        <ion-input></ion-input>
+        <ion-input 
+          type="email" 
+          ngModel 
+          name="email" 
+          required
+          email
+        ></ion-input>
       </ion-item>
     </div>
 
-    <ion-list-header mode="ios">Quantity</ion-list-header>
+    <ion-list-header mode="ios">Booking Details</ion-list-header>
     <div>
       <ion-item lines="none" mode="md">
-        <ion-label mode="md">Available Slots</ion-label>
-        <ion-note id="payment" mode="ios" slot="end">{{ availableSlots }} persons</ion-note>
+        <ion-label mode="md">Booking Date</ion-label>
+        <ion-datetime type="date" ngModel name="booking-date" required></ion-datetime>
       </ion-item>
 
-      <ion-item lines="none" mode="md">
-          <ion-buttons slot="start" mode="md">
+      <div class="compact-items">
+        <ion-item lines="none" mode="md">
+          <ion-label mode="md">Available Slots</ion-label>
+          <ion-note id="payment" mode="ios" slot="end">{{ availableSlots }} persons</ion-note>
+        </ion-item>
+  
+        <ion-item lines="none" mode="md">
+          <ion-label>Persons</ion-label>
+          <ion-buttons mode="md">
             <ion-button color="primary" (click)="onDecrease()"  [disabled]="!canDecrease" >
               <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-buttons>
-        <ion-label class="ion-text-center" mode="md">{{ quantity }}</ion-label>
-        <ion-buttons slot="end" mode="md">
-          <ion-button color="primary" (click)="onIncrease()" [disabled]="!canIncrease">
-            <ion-icon name="add-circle" slot="icon-only"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
+          <ion-label class="ion-text-center" mode="md">{{ quantity }}</ion-label>
+          <ion-buttons mode="md">
+            <ion-button color="primary" (click)="onIncrease()" [disabled]="!canIncrease">
+              <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </div>
     </div>
 
     <ion-list-header mode="ios">Payment Summary</ion-list-header>
-    <div>
+    <div class="compact-items">
       <ion-item lines="none" mode="md">
         <ion-label mode="md">Total</ion-label>
         <ion-note id="payment" mode="ios" slot="end">₱ {{ totalPayment | number:'.2-2' }}</ion-note>
@@ -65,11 +82,20 @@
         <ion-label mode="md">Use Promo Code</ion-label>
       </ion-item>
     </div>
+
+    <ion-button 
+      type="submit" 
+      class="ion-margin-top" 
+      expand="block"
+      [disabled]="!booking.valid"
+    >
+      BOOK
+    </ion-button>
   </form>
 </ion-content>
-
+<!-- 
 <ion-footer class="ion-no-padding" no-border>
-  <ion-button class="ion-no-margin" (click)="onBook()">
+  <ion-button type="submit" class="ion-no-margin">
     BOOK
   </ion-button>
-</ion-footer>
+</ion-footer> -->

@@ -1,0 +1,30 @@
+{
+  "bookings": [
+    {
+      "id": "b1",
+      "activity-id": "a1",
+      "contact-person": {
+        "name": "Juan Dela Cruz",
+        "contact-number": "09123456789",
+        "email": "test@gmail.com"
+      },
+      "quantity": 3,
+      "total": 4500,
+      "status": "pay",
+      "booked-date": "July 27, 2019"
+    },
+    {
+      "id": "b2",
+      "activity-id": "a2",
+      "contact-person": {
+        "name": "Bea Binene",
+        "contact-number": "09987654321",
+        "email": "test@gmail.com"
+      },
+      "quantity": 2,
+      "total": 2000,
+      "status": "claim",
+      "booked-date": "July 28, 2019"
+    }
+  ]
+}

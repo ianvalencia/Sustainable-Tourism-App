@@ -81,4 +81,17 @@ export class ActivitiesService {
         return activity.id === actId;
     })};
   }
+
+  filterBySearch(searchTerm) {
+    return this._activities.filter(item => {
+      return (item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) ||
+        (item.location.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+    });
+  }
+
+  filterByCategory(category) {
+    return this._activities.filter(item => {
+      return item.activityType === category;
+    });
+  }
 }

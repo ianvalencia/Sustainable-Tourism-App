@@ -17,16 +17,19 @@
 <ion-content fullscreen>
   <ion-slides pager="true">
     <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="loadedActivity.imgUrl"></ion-img>
+      <!-- <div class="transparent-gradient"></div>
+      <ion-img [src]="loadedActivity.imgUrl"></ion-img> -->
+      <div class="slide-image" [ngStyle]="{'background': 'linear-gradient(rgba(0,0,0, 0.5), transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + loadedActivity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}"></div>
     </ion-slide>
     <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="loadedActivity.imgUrl"></ion-img>
+      <!-- <div class="transparent-gradient"></div>
+      <ion-img [src]="loadedActivity.imgUrl"></ion-img> -->
+      <div class="slide-image" [ngStyle]="{'background': 'linear-gradient(rgba(0,0,0, 0.5), transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + loadedActivity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}"></div>
     </ion-slide>
     <ion-slide>
-      <div class="transparent-gradient"></div>
-      <ion-img [src]="loadedActivity.imgUrl"></ion-img>
+      <!-- <div class="transparent-gradient"></div>
+      <ion-img [src]="loadedActivity.imgUrl"></ion-img> -->
+      <div class="slide-image" [ngStyle]="{'background': 'linear-gradient(rgba(0,0,0, 0.5), transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + loadedActivity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}"></div>
     </ion-slide>
   </ion-slides>
   <div class="subsection-container" id="title">

@@ -12,47 +12,58 @@
 
 .h1 {
   font-weight: 800;
-  font-size: 3.815em;
+  // font-size: 3.815em;
+  font-size: 15.2588;
 }
 
 .h2 {
   font-weight: 800;
-  font-size: 3.052em;
+  // font-size: 3.052em;
+  font-size: 12.207vw;
 }
 
 .h3 {
   font-weight: 800;
-  font-size: 2.441em;
+  // font-size: 2.441em;
+  font-size: 9.7656vw;
 }
 
 .h4 {
   font-weight: 800;
-  font-size: 1.953em;
+  //font-size: 1.953em;
+  // font-size: 8vw;
+  font-size: 7.8125vw;
 }
 
 .h5 {
   font-weight: 800;
-  font-size: 1.563em;
+  // font-size: 1.563em;
+  font-size: 6.25vw;
 }
 
 .h6 {
   font-weight: 800;
-  font-size: 1.25em;
+  // font-size: 1.25em;
+  font-size: 5vw;
 }
 
 .subtitle-1 {
   font-weight: 400;
-  font-size: 1em;
+  // font-size: 1em;
+  font-size: 4vw;
 }
 
 .subtitle-2 {
   font-weight: 400;
-  font-size: 0.8em;
+  // font-size: 0.8em;
+  font-size: 3.5vw;
 }
 
 .body {
   font-family: 'San Francisco Text';
-  font-size: 1em;
+  // font-size: 1em;
+  font-size: 4vw;
+  // font-size: 17pt;
 }
 
 .ion-color-inverted-primary {
@@ -84,4 +95,27 @@
 .center-inline {
   display: inline-block;
   vertical-align: middle;
+}
+
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.fullscreen {
+  height: 100%;
+  width: 100%;
 }
