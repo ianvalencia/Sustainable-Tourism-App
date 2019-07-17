@@ -93,12 +93,61 @@ export class ActivitiesService {
     )
   ]);
 
+  private _favoritesId = new BehaviorSubject<string[]>([]);
+
   constructor(
     private userService: UserService
   ) { }
 
   get activities() {
     return this._activities.asObservable();
+  }
+
+  get favoritesId() {
+    return this._favoritesId.asObservable();
+  }
+
+  get favorites() {
+    return this.favoritesId.pipe(
+      map(favoriteIds => {
+        return favoriteIds.map(id => {
+          let act: Activity;
+          this.getActivity(id).subscribe(activity => {
+            act = activity;
+          });
+          return act;
+        });
+      })
+    );
+  }
+
+  checkIfFavorite(id: string) {
+    let checker: boolean;
+    this.favoritesId.pipe(
+      take(1)
+    ).subscribe(ids => {
+      checker = ids.includes(id);
+    });
+
+    return checker;
+  }
+
+  toggleFavorite(id: string) {
+    if (this.checkIfFavorite(id)) {
+      this.favoritesId.pipe(
+        take(1)
+      ).subscribe(ids => {
+        const newIds = ids.filter(item => item !== id);
+        this._favoritesId.next(newIds);
+      });
+    } else {
+      this.favoritesId.pipe(
+        take(1),
+        
+      ).subscribe(ids => {
+        this._favoritesId.next(ids.concat(id));
+      });
+    }
   }
 
   getActivity(actId: string) {
@@ -113,10 +162,20 @@ export class ActivitiesService {
   }
 
   getOwnedActivities() {
-    return this._activities.pipe(
+    return this.activities.pipe(
       map(activities => {
         return activities.filter(item => {
           return item.owner.id === this.userService.User.id;
+        });
+      })
+    );
+  }
+
+  getBookableActivities() {
+    return this.activities.pipe(
+      map(activities => {
+        return activities.filter(item => {
+          return item.owner.id !== this.userService.User.id;
         });
       })
     );
@@ -198,6 +257,38 @@ export class ActivitiesService {
           oldActivity.owner,
           oldActivity.bookings,
           oldActivity.cancelled
+        );
+        this._activities.next(updatedActivities);
+      })
+    );
+  }
+
+  toggleCancellation(
+    id: string,
+  ) {
+    return this.activities.pipe(
+      take(1),
+      delay(1000),
+      tap(activities => {
+        const updatedActivityIndex = activities.findIndex(act => act.id === id);
+        const updatedActivities = [...activities];
+        const oldActivity = updatedActivities[updatedActivityIndex];
+        updatedActivities[updatedActivityIndex] = new Activity(
+          oldActivity.id,
+          oldActivity.name,
+          oldActivity.activityType,
+          oldActivity.description,
+          oldActivity.location,
+          oldActivity.price,
+          oldActivity.imgUrl,
+          oldActivity.contactDetails,
+          oldActivity.bookingStart,
+          oldActivity.bookingEnd,
+          oldActivity.capacity,
+          oldActivity.duration,
+          oldActivity.owner,
+          oldActivity.bookings,
+          !oldActivity.cancelled
         );
         this._activities.next(updatedActivities);
       })

@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class FavoritesService {
-  private favoritesId: string[] = ['a1', 'a3'];
+  private favoritesId: string[] = [];
   private _favorites = [];
   private activitiesSub: Subscription;
   private activities = [];
@@ -16,10 +16,7 @@ export class FavoritesService {
   constructor(
     private activitiesService: ActivitiesService
   ) {
-    this.activitiesSub = this.activitiesService.activities.subscribe(activities => {
-      this.activities = activities;
-    });
-    this.loadFavorites();
+    
   }
 
   get favorites() {

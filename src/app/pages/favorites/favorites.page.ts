@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Activity } from 'src/app/interfaces/activity';
 import { FavoritesService } from 'src/app/services/favorites.service';
@@ -10,21 +10,24 @@ import { Subscription } from 'rxjs';
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
 })
-export class FavoritesPage implements OnInit {
-  favorites;
+export class FavoritesPage implements OnInit, OnDestroy {
+  favorites: Activity[];
   private activitiesSub: Subscription;
   private favoritesSub: Subscription;
 
   constructor(
-    private favoritesService: FavoritesService,
     private activitiesService: ActivitiesService
   ) { }
 
   ngOnInit() {
-    this.favorites = this.favoritesService.favorites;
+    this.activitiesSub = this.activitiesService.favorites.subscribe(activities => {
+      this.favorites = activities;
+    });
   }
 
-  ionViewWillEnter() {
-    this.favorites = this.favoritesService.favorites;
+  ngOnDestroy() {
+    if (this.activitiesSub) {
+      this.activitiesSub.unsubscribe();
+    }
   }
 }

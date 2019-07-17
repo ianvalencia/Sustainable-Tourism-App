@@ -17,13 +17,13 @@
       <br>
 
       <div class="h6">
-        <ion-text class="center-inline">{{ booking.name }}</ion-text>
+        <ion-text class="center-inline">{{ activity.name }}</ion-text>
         <ion-icon class="center-inline" name="help-circle-outline" (click)="onSeeMore()"></ion-icon>
       </div>
 
       <div class="subtitle-1">
         <ion-icon name="pin" class="center-inline"></ion-icon>
-        <ion-text class="center-inline">{{ booking.location }}</ion-text>
+        <ion-text class="center-inline">{{ activity.location }}</ion-text>
       </div>
 
       <br>
@@ -31,24 +31,24 @@
       <div class="deetz-row flex-row">
           <div class="item flex-column">
             <div class="header">Start Date</div>
-            <div class="data">July 15, 2019</div>
+            <div class="data">{{ booking.bookingDate | date:'mediumDate' }}</div>
           </div>
 
           <div class="item flex-column">
             <div class="header">Duration</div>
-            <div class="data">3 Days</div>
+            <div class="data">{{ activity.duration }} Days</div>
           </div> 
        </div> 
 
        <div class="deetz-row flex-row">
           <div class="item flex-column">
             <div class="header">Traveler(s)</div>
-            <div class="data">Juan Dela Cruz + 2 persons</div>
+            <div class="data">{{ booking.contactPerson.name }}{{ booking.quantity > 1 ? ' + ' + (booking.quantity-1) + ' persons' : '' }}</div>
           </div>
 
           <div class="item flex-column">
-            <div class="header">Price</div>
-            <div class="data">₱ {{ booking.price | number:'.2-2' }}</div>
+            <div class="header">Total</div>
+            <div class="data">₱ {{ booking.total | number:'.2-2' }}</div>
           </div> 
        </div> 
 

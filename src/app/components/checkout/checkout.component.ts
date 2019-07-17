@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
+import { Activity } from 'src/app/interfaces/activity';
 
 @Component({
   selector: 'app-checkout',
@@ -8,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit {
-  @Input() selectedActivity;
+  @Input() selectedActivity: Activity;
   @ViewChild('booking') form: NgForm;
   quantity = 1;
   fullname: string;
@@ -62,9 +63,9 @@ export class CheckoutComponent implements OnInit {
           fullname: this.form.value['full-name'],
           contactNumber: this.form.value['contact-number'],
           email: this.form.value['email'],
-          totalPayment: this.totalPayment,
+          total: +this.totalPayment,
           quantity: this.quantity,
-          activitySnapshot: this.selectedActivity
+          bookingDate: new Date(this.form.value['booking-date'])
         }
       },
       'book'

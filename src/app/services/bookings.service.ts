@@ -1,53 +1,67 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-import { Activity } from '../interfaces/activity';
+import { Booking } from '../interfaces/booking';
+import { take, tap, delay, map } from 'rxjs/operators';
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingsService {
-  private _bookings = [
-    {
-      id: 'b1',
-      name: 'Mount Something Hiking',
-      provider: 'Bridge360',
-      price: 1500,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras congue hendrerit lectus, id varius erat pellentesque ac. Morbi ultrices, ipsum ac pretium efficitur, enim dolor consectetur nisl, sed egestas lacus elit non justo. Donec sodales diam lectus, sed iaculis ligula tempus nec. Quisque vitae pulvinar diam, sit amet ultricies orci. In porta augue lacus, luctus sodales odio egestas eu. Vestibulum.',
-      location: 'Philippines',
-      activityType: 'Hiking',
-      imgUrl: 'https://www.travelwyoming.com/sites/default/files/uploads/consumer/7-18_MedicineBowHikingFishing_KL_0708_3298.jpg',
-      rating: 5.0,
-      contactDetails: '09123456789',
-      schedule: 'July 24-26, 2019',
-      capacity: 50,
-      claimed: 22,
-      aid: 'a1'
-    },
-    {
-      id: 'b2',
-      name: 'Skin Diving in Somewhere',
-      provider: 'Bridge360',
-      price: 1500,
-      description: 'Lorem Ipsum hehe',
-      location: 'Philippines',
-      activityType: 'Skin Diving',
-      imgUrl: 'https://www.divein.com/wp-content/uploads/image-archive/img/skin-diving-on-reef.jpg',
-      rating: 5.0,
-      contactDetails: '09123456789',
-      schedule: 'July 24-26, 2019',
-      capacity: 50,
-      claimed: 22,
-      aid: 'a2'
-    },
-  ];
+  private _bookings = new BehaviorSubject<Booking[]>([]);
 
   constructor() { }
 
   get bookings() {
-    return [...this._bookings]
+    return this._bookings.asObservable();
   }
 
   getBooking(id: string) {
-    return {...this._bookings.find(p => p.id === id)};
+    return this.bookings.pipe(
+      take(1),
+      map(bookings => {
+        return {
+          ...bookings.find(b => b.id === id)
+        };
+      })
+    );
+  }
+
+  addBooking(
+    ownerId: string,
+    actId: string,
+    bookingDate: Date,
+    quantity: number,
+    total: number,
+    name: string,
+    contactNumber: string,
+    email: string
+  ) {
+    const newBooking = new Booking(
+      Math.random().toString(),
+      ownerId,
+      actId,
+      bookingDate,
+      quantity,
+      total,
+      {
+        name,
+        contactNumber,
+        email
+      },
+      'payment'
+    );
+    console.log('DONE');
+    return this.bookings.pipe(
+      take(1),
+      delay(1000),
+      tap(bookings => {
+        this._bookings.next(bookings.concat(newBooking));
+      })
+    );
+
   }
 }

@@ -11,8 +11,8 @@ interface User {
 export class UserService {
     private user: User;
     private _user = {
-        id: 'abc',
-        name: 'Bridge360'
+        id: 'def',
+        name: 'Juan Dela Cruz'
     };
 
     get User() {

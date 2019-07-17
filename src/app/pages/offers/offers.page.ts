@@ -39,6 +39,7 @@ export class OffersPage implements OnInit, OnDestroy {
       //   return item.owner.id === this.userService.User.id;
       // });
       this.OFFERS = activities;
+      console.log(this.OFFERS);
     });
   }
 

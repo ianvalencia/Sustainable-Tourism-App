@@ -10,8 +10,8 @@
       <ion-button *ngIf="!editable" (click)="onToggleFavorite()">
         <ion-icon [name]="isFavorite?'heart':'heart-empty'" slot="icon-only" [color]="isFavorite?'danger':''"></ion-icon>
       </ion-button>
-      <ion-button *ngIf="editable" [routerLink]="['/app/edit-offer', loadedActivity.id]">
-          <ion-icon name="create" slot="icon-only"></ion-icon>
+      <ion-button *ngIf="editable" (click)="onOptionsPressed()">
+          <ion-icon name="more" slot="icon-only"></ion-icon>
         </ion-button>
     </ion-buttons>
   </ion-toolbar>

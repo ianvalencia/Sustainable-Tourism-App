@@ -77,8 +77,6 @@ export class NewOfferPage implements OnInit {
         this.navCtrl.back();
       });
     });
-
-    
   }
 
 }

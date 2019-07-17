@@ -32,7 +32,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.activitiesSub = this.activitiesService.activities.subscribe(activities => {
+    this.activitiesSub = this.activitiesService.getBookableActivities().subscribe(activities => {
       this.rawActivities = activities;
 
       this.setFilteredItems();
