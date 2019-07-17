@@ -32,6 +32,7 @@ export class ActivityDetailsPage implements OnInit {
       const actId = paramMap.get('id');
       this.loadedActivity = this.ActService.getActivity(actId);
     });
+    console.log(this.loadedActivity);
   }
 
   onToggleFavorite() {
@@ -59,7 +60,8 @@ export class ActivityDetailsPage implements OnInit {
         if (resultData.role === 'book') {
           console.log(resultData.data.bookingData);
         }
-      });
+      })
+    ;
   }
 
 }

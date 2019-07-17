@@ -13,6 +13,7 @@ export class FavoritesPage implements OnInit {
   constructor(private favoritesService: FavoritesService) { }
 
   ngOnInit() {
+    this.favorites = this.favoritesService.bookings;
   }
 
   ionViewWillEnter() {

@@ -7,9 +7,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ActivityCardComponent implements OnInit {
   @Input() activity;
+  @Input() editMode = false;
+
+  maxLength = 25;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.activity);
+  }
+
+  get linkPrefix() {
+    return this.editMode ? '/app/edit-offer' : '/app/activity-details';
+  }
 
 }

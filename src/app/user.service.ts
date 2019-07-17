@@ -10,6 +10,14 @@ interface User {
 @Injectable() // Makes it injectable to other components
 export class UserService {
     private user: User;
+    private _user = {
+        id: 'abc',
+        name: 'Bridge360'
+    };
+
+    get User() {
+      return this._user;
+    }
 
     constructor(private afAuth: AngularFireAuth) {
 

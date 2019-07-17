@@ -46,6 +46,7 @@ export class CheckoutComponent implements OnInit {
       await alert.present();
     }
   }
+
   onCancel() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
@@ -83,7 +84,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   get availableSlots() {
-    return this.selectedActivity.capacity - this.selectedActivity.claimed;
+    return this.selectedActivity.capacity - this.selectedActivity.bookings;
   }
 
   get canDecrease() {
