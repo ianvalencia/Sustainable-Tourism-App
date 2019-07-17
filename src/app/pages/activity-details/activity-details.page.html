@@ -7,9 +7,12 @@
       {{ loadedActivity.name }}
     </ion-title>
     <ion-buttons  mode="md" slot="primary">
-      <ion-button (click)="onToggleFavorite()">
+      <ion-button *ngIf="!editable" (click)="onToggleFavorite()">
         <ion-icon [name]="isFavorite?'heart':'heart-empty'" slot="icon-only" [color]="isFavorite?'danger':''"></ion-icon>
       </ion-button>
+      <ion-button *ngIf="editable" [routerLink]="['/app/edit-offer', loadedActivity.id]">
+          <ion-icon name="create" slot="icon-only"></ion-icon>
+        </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -70,5 +73,5 @@
 </ion-content>
 
 <ion-footer mode="ios">
-  <ion-button id="book-btn" (click)="onBookActivity()" [disabled]="loadedActivity.cancelled">BOOK ACTIVITY</ion-button>
+  <ion-button *ngIf="!editable" id="book-btn" (click)="onBookActivity()" [disabled]="loadedActivity.cancelled">BOOK ACTIVITY</ion-button>
 </ion-footer>

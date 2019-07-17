@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
 import { Activity } from 'src/app/interfaces/activity';
@@ -7,14 +7,17 @@ import { Activity } from 'src/app/interfaces/activity';
 import { ActivitiesService } from 'src/app/services/activities.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { CheckoutComponent } from 'src/app/components/checkout/checkout.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-activity-details',
   templateUrl: './activity-details.page.html',
   styleUrls: ['./activity-details.page.scss'],
 })
-export class ActivityDetailsPage implements OnInit {
+export class ActivityDetailsPage implements OnInit, OnDestroy {
   loadedActivity;
+  editable;
+  private placeSub: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,9 +33,19 @@ export class ActivityDetailsPage implements OnInit {
         return;
       }
       const actId = paramMap.get('id');
-      this.loadedActivity = this.ActService.getActivity(actId);
+
+      this.placeSub = this.ActService.getActivity(actId).subscribe(activity => {
+        this.loadedActivity = activity;
+      });
     });
-    console.log(this.loadedActivity);
+
+    this.editable = history.state.editable;
+  }
+
+  ngOnDestroy() {
+    if (this.placeSub) {
+      this.placeSub.unsubscribe();
+    }
   }
 
   onToggleFavorite() {

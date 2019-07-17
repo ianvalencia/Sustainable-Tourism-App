@@ -16,15 +16,6 @@ const routes: Routes = [
             path: '',
             loadChildren: '../discover/discover.module#DiscoverPageModule',
           },
-          {
-            path: 'categorypage',
-            children: [
-              {
-                path: '',
-                loadChildren: '../categorypage/categorypage.module#CategorypagePageModule'
-              }
-            ]
-          }
         ]
       },
       {

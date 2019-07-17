@@ -14,7 +14,7 @@ export class AppComponent {
     {
       icon: 'contact',
       label: 'Profile',
-      link: '/profile'
+      link: '/app/profile'
     },
     {
       icon: 'heart',

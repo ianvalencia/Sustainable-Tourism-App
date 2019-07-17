@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
@@ -6,19 +6,22 @@ import { debounceTime } from 'rxjs/operators';
 import { Category } from 'src/app/interfaces/category.model';
 import { DiscoverService } from 'src/app/services/discover.service';
 import { ActivitiesService } from 'src/app/services/activities.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-discover',
   templateUrl: './discover.page.html',
   styleUrls: ['./discover.page.scss'],
 })
-export class DiscoverPage implements OnInit {
+export class DiscoverPage implements OnInit, OnDestroy {
   searchTerm = '';
   searchControl: FormControl;
   searching = false;
   categories = [];
   activities = [];
+  rawActivities =[];
   category = '';
+  private activitiesSub: Subscription;
 
   constructor(
     private CategoryService: DiscoverService,
@@ -29,19 +32,25 @@ export class DiscoverPage implements OnInit {
   }
 
   ngOnInit() {
-    this.setFilteredItems();
+    this.activitiesSub = this.activitiesService.activities.subscribe(activities => {
+      this.rawActivities = activities;
 
-    this.searchControl.valueChanges
-      .pipe(debounceTime(700))
-      .subscribe(search => {
-        this.searchTerm = search;
-        this.searching = false;
-        this.setFilteredItems();
+      this.setFilteredItems();
+
+      this.searchControl.valueChanges
+        .pipe(debounceTime(700))
+        .subscribe(search => {
+          this.searchTerm = search;
+          this.searching = false;
+          this.setFilteredItems();
+      });
     });
   }
 
-  skip() {
-    this.router.navigateByUrl('/app/tabs/discover/categorypage');
+  ngOnDestroy() {
+    if (this.activitiesSub) {
+      this.activitiesSub.unsubscribe();
+    }
   }
 
   onSearchInput() {
@@ -49,7 +58,12 @@ export class DiscoverPage implements OnInit {
   }
 
   setFilteredItems() {
-    this.activities = this.activitiesService.filterBySearch(this.searchTerm);
+    this.activities = this.rawActivities.filter(item => {
+      return (item.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) ||
+        (item.location.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) ||
+        (item.activityType.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1);
+    });
+
   }
 
   searchByCategory() {

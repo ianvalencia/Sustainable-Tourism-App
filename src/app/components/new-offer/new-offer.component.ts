@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-new-offer',
@@ -12,7 +12,8 @@ export class NewOfferComponent implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController
   ) { }
 
   ngOnInit() {}
@@ -50,6 +51,12 @@ export class NewOfferComponent implements OnInit {
     if (!this.form.valid) {
       return;
     }
+    // this.loadingCtrl.create({
+    //   message: 'Creating new offer...'
+    // }).then(loadingEL => {
+    //   loadingEL.present();
+    // })
+
     this.modalCtrl.dismiss(
       {
         offerData: {

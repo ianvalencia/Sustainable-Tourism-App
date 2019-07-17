@@ -13,7 +13,6 @@ export class CategorypagePage implements OnInit {
   constructor(private ActivityService: ActivitiesService) { }
 
   ngOnInit() {
-    this.activities = this.ActivityService.getActivities();
   }
 
 }

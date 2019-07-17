@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: './pages/favorites/favorites.module#FavoritesPageModule'
       },
       {
+        path: 'new-offer',
+        loadChildren: './pages/new-offer/new-offer.module#NewOfferPageModule'
+      },
+      {
         path: 'booking-details',
         children: [
           {
@@ -51,6 +55,20 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'edit-offer',
+        children: [
+          {
+            path: ':id',
+            loadChildren: './pages/edit-offer/edit-offer.module#EditOfferPageModule'
+          },
+          {
+            path: '',
+            redirectTo: '/app/tabs/offers',
+            pathMatch: 'full'
+          }
+        ]
+      }
     ]
   },
   {
@@ -68,7 +86,7 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: './pages/register/register.module#RegisterPageModule'
-  }
+  },
 ];
 
 @NgModule({

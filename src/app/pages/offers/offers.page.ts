@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Activity } from 'src/app/interfaces/activity';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+
+import { Activity } from 'src/app/interfaces/activity';
 import { NewOfferComponent } from 'src/app/components/new-offer/new-offer.component';
 import { ActivitiesService } from 'src/app/services/activities.service';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.page.html',
   styleUrls: ['./offers.page.scss'],
 })
-export class OffersPage implements OnInit {
-  private OFFERS = [];
+export class OffersPage implements OnInit, OnDestroy {
+  private OFFERS: Activity[];
+  private offersSub: Subscription;
 
   constructor(
     private modalCtrl: ModalController,
-    private activitiesService: ActivitiesService
+    private activitiesService: ActivitiesService,
+    private userService: UserService
   ) { }
 
   get offers() {
@@ -29,7 +34,18 @@ export class OffersPage implements OnInit {
   }
 
   ngOnInit() {
-    this.OFFERS = this.activitiesService.getOwnedActivities();
+    this.offersSub = this.activitiesService.getOwnedActivities().subscribe(activities => {
+      // this.OFFERS = activities.filter(item => {
+      //   return item.owner.id === this.userService.User.id;
+      // });
+      this.OFFERS = activities;
+    });
+  }
+
+  ngOnDestroy() {
+    if(this.offersSub) {
+      this.offersSub.unsubscribe();
+    }
   }
 
   onCreateOffer() {
@@ -43,20 +59,19 @@ export class OffersPage implements OnInit {
     })
     .then(resultData => {
       if (resultData.role === 'create') {
-        console.log(resultData.data.offerData);
         const newOffer = resultData.data.offerData;
         this.activitiesService.addActivity(
           newOffer.name,
           newOffer.activityType,
           newOffer.description,
           newOffer.location,
-          newOffer.price,
+          +newOffer.price,
           newOffer.imgUrl,
           newOffer.contactDetails,
-          newOffer.bookingStart,
-          newOffer.bookingEnd,
-          newOffer.capacity,
-          newOffer.duration,
+          new Date(newOffer.bookingStart),
+          new Date(newOffer.bookingEnd),
+          +newOffer.capacity,
+          +newOffer.duration,
         );
       }
     })

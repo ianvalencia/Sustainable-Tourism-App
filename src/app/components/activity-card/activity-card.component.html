@@ -1,4 +1,4 @@
-<ion-card mode="ios"  [routerLink]="[linkPrefix, activity.id]">
+<ion-card mode="ios" (click)="goToActDetails()">
   <div class="card-background" [ngStyle]="{'background': 'linear-gradient(rgba(0,0,0, 0.5), transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + activity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
     <div class="lower-left">
       <ion-text class="h5">

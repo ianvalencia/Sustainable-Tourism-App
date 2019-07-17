@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { Activity } from '../interfaces/activity';
 import { ActivitiesService } from './activities.service';
+import { tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,22 +10,25 @@ import { ActivitiesService } from './activities.service';
 export class FavoritesService {
   private favoritesId: string[] = ['a1', 'a3'];
   private _favorites = [];
+  private activitiesSub: Subscription;
+  private activities = [];
 
-  constructor(private activitiesService: ActivitiesService) { 
+  constructor(
+    private activitiesService: ActivitiesService
+  ) {
+    this.activitiesSub = this.activitiesService.activities.subscribe(activities => {
+      this.activities = activities;
+    });
     this.loadFavorites();
   }
 
-  get bookings() {
+  get favorites() {
     return [...this._favorites];
-  }
-
-  getBooking(id: string) {
-    return {...this._favorites.find(p => p.id === id)};
   }
 
   loadFavorites() {
     this._favorites = this.favoritesId.map(id => {
-      return this.activitiesService.getActivity(id);
+      return this.activities.find(p => p.id === id);
     });
   }
 
