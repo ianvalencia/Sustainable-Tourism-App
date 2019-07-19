@@ -15,15 +15,15 @@
       <ion-col size-md="6" offset-md="3">    
               <ion-item>
                   <ion-label position="floating">Name of Offer</ion-label>
-                  <ion-input type="text" id="inputr"></ion-input>
+                  <ion-input [(ngModel)]="offer" type="text" id="inputr"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Name of Provider</ion-label>
-                <ion-input type="text" id="inputp"></ion-input>
+                <ion-input [(ngModel)]="provider" type="text" id="inputp"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label>Activity Type</ion-label>
-                <ion-select>
+                <ion-select [(ngModel)]="type" >
                   <ion-select-option value="Bike Packing">Bike Packing</ion-select-option>
                   <ion-select-option value="Mountaineering">Mountaineering</ion-select-option>
                   <ion-select-option value="Skin Diving">Skin Diving</ion-select-option>
@@ -33,22 +33,22 @@
               </ion-item>
               <ion-item> 
                 <ion-label position="floating">Location</ion-label>
-                <ion-input type="text" id="inputl"></ion-input>
+                <ion-input [(ngModel)]="location" type="text" id="inputl"></ion-input>
             </ion-item>
             <ion-item>
                     <ion-label position="floating">Description</ion-label>
-                    <ion-input type="text" id="inputd"></ion-input>
+                    <ion-input [(ngModel)]="description" type="text" id="inputd"></ion-input>
                 </ion-item>  
               <ion-item>
                   <ion-label position="floating">Price</ion-label>
-                  <ion-input type="number" id=inputa></ion-input>
+                  <ion-input [(ngModel)]="price" type="number" id=inputa></ion-input>
               </ion-item>
               <ion-item>
                     <ion-label position="floating">Image</ion-label>
                     <ion-input type="text" id="inputi"></ion-input>
                 </ion-item> 
               <div margin-vertical text-right>
-              <ion-button id="button2">Submit</ion-button>
+              <ion-button id="button2" (click)="presentAlert()">Submit</ion-button>
               </div>
       
   </ion-col>
