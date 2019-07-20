@@ -1,77 +1,133 @@
 <ion-header mode="ios">
-  <ion-toolbar mode="ios">
+  <ion-toolbar mode="ios" *ngIf="!isLoading">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/app/tabs/discover" mode="md"></ion-back-button>
+      <ion-back-button
+        defaultHref="/app/tabs/discover"
+        mode="md"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title>
       {{ loadedActivity.name }}
     </ion-title>
-    <ion-buttons  mode="md" slot="primary">
-      <ion-button *ngIf="!editable" (click)="onToggleFavorite()">
-        <ion-icon [name]="isFavorite?'heart':'heart-empty'" slot="icon-only" [color]="isFavorite?'danger':''"></ion-icon>
+    <ion-buttons mode="md" slot="primary">
+      <ion-button *ngIf="!editable && !isLoading" (click)="onToggleFavorite()">
+        <ion-icon
+          [name]="isFavorite ? 'heart' : 'heart-empty'"
+          slot="icon-only"
+          [color]="isFavorite ? 'danger' : ''"
+          *ngIf="!isLoading"
+        ></ion-icon>
       </ion-button>
       <ion-button *ngIf="editable" (click)="onOptionsPressed()">
-          <ion-icon name="more" slot="icon-only"></ion-icon>
-        </ion-button>
+        <ion-icon name="more" slot="icon-only"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-  <ion-slides pager="true">
-    <ion-slide>
-      <div class="slide-image" [ngStyle]="{'background': 'linear-gradient(transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + loadedActivity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}"></div>
-    </ion-slide>
-    <ion-slide>
-      <div class="slide-image" [ngStyle]="{'background': 'linear-gradient(transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + loadedActivity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}"></div>
-    </ion-slide>
-    <ion-slide>
-      <div class="slide-image" [ngStyle]="{'background': 'linear-gradient(transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' + loadedActivity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}"></div>
-    </ion-slide>
-  </ion-slides>
-  <div class="subsection-container" id="title">
-    <ion-text class="subtitle-1">{{ loadedActivity.owner.name }} | {{ loadedActivity.activityType }}</ion-text>
-    <ion-text class="h5">{{ loadedActivity.name }}</ion-text>
-    <ion-text class="h6" color="primary">
-      <span class="center-inline">₱ {{ loadedActivity.price | number:'.2-2' }}</span>
-    </ion-text>
-    <ion-text *ngIf="!loadedActivity.cancelled">
-      <ion-icon class="center-inline ion-margin-end" name="people"></ion-icon>
-      <span class="center-inline">Available booking slots: {{ loadedActivity.capacity - loadedActivity.bookings }}</span>
-    </ion-text>
-    <ion-text *ngIf="loadedActivity.cancelled">
-      <ion-icon class="center-inline ion-margin-end" name="alert"></ion-icon>
-      <span class="center-inline">Cancelled activity</span>
-    </ion-text>   
-    <div class="hr-line"></div>
-    <ion-text class="h6 subsection-header">Activity Details</ion-text>
-    <ion-item lines="none" class="body">
-      <ion-icon name="pin" slot="start"></ion-icon>
-      <ion-label>{{ loadedActivity.location }}</ion-label>
-      <ion-note mode="ios" slot="end">Location</ion-note>
-    </ion-item>
-    <ion-item lines="none" class="body">
-      <ion-icon name="calendar" slot="start"></ion-icon>
-      <ion-label>{{ loadedActivity.bookingStart | date:'mediumDate' }} - {{ loadedActivity.bookingEnd | date:'mediumDate' }}</ion-label>
-      <ion-note mode="ios" slot="end">Schedule</ion-note>
-    </ion-item>
-    <ion-item lines="none" class="body">
-      <ion-icon name="call" slot="start"></ion-icon>
-      <ion-label>{{ loadedActivity.contactDetails }}</ion-label>
-      <ion-note mode="ios" slot="end">Contact Number</ion-note>
-    </ion-item>
-    <div class="hr-line"></div>
-    <ion-text class="h6 subsection-header">Description</ion-text>
-    <ion-text class="body">{{ loadedActivity.description }}</ion-text>
-    <div class="hr-line"></div>
-    <ion-text class="h6 subsection-header">Rating</ion-text>
-    <ion-text class="body">Feature coming soon...</ion-text>
-    
+  <div *ngIf="!isLoading">
+    <ion-slides pager="true">
+      <ion-slide>
+        <div
+          class="slide-image"
+          [ngStyle]="{
+            background:
+              'linear-gradient(transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' +
+              loadedActivity.imgUrl +
+              ')',
+            'background-position': 'center center',
+            'background-size': 'cover'
+          }"
+        ></div>
+      </ion-slide>
+      <ion-slide>
+        <div
+          class="slide-image"
+          [ngStyle]="{
+            background:
+              'linear-gradient(transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' +
+              loadedActivity.imgUrl +
+              ')',
+            'background-position': 'center center',
+            'background-size': 'cover'
+          }"
+        ></div>
+      </ion-slide>
+      <ion-slide>
+        <div
+          class="slide-image"
+          [ngStyle]="{
+            background:
+              'linear-gradient(transparent, transparent, 80%, rgba(0,0,0, 0.5)), url(' +
+              loadedActivity.imgUrl +
+              ')',
+            'background-position': 'center center',
+            'background-size': 'cover'
+          }"
+        ></div>
+      </ion-slide>
+    </ion-slides>
+    <div class="subsection-container" id="title">
+      <ion-text class="subtitle-1"
+        >{{ loadedActivity.owner.name }} |
+        {{ loadedActivity.activityType }}</ion-text
+      >
+      <ion-text class="h5">{{ loadedActivity.name }}</ion-text>
+      <ion-text class="h6" color="primary">
+        <span class="center-inline"
+          >₱ {{ loadedActivity.price | number: ".2-2" }}</span
+        >
+      </ion-text>
+      <ion-text *ngIf="!loadedActivity.cancelled">
+        <ion-icon class="center-inline ion-margin-end" name="people"></ion-icon>
+        <span class="center-inline"
+          >Available booking slots:
+          {{ loadedActivity.capacity - loadedActivity.bookings }}</span
+        >
+      </ion-text>
+      <ion-text *ngIf="loadedActivity.cancelled">
+        <ion-icon class="center-inline ion-margin-end" name="alert"></ion-icon>
+        <span class="center-inline">Cancelled activity</span>
+      </ion-text>
+      <div class="hr-line"></div>
+      <ion-text class="h6 subsection-header">Activity Details</ion-text>
+      <ion-item lines="none" class="body">
+        <ion-icon name="pin" slot="start"></ion-icon>
+        <ion-label>{{ loadedActivity.location }}</ion-label>
+        <ion-note mode="ios" slot="end">Location</ion-note>
+      </ion-item>
+      <ion-item lines="none" class="body">
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        <ion-label
+          >{{ loadedActivity.bookingStart | date: "mediumDate" }} -
+          {{ loadedActivity.bookingEnd | date: "mediumDate" }}</ion-label
+        >
+        <ion-note mode="ios" slot="end">Schedule</ion-note>
+      </ion-item>
+      <ion-item lines="none" class="body">
+        <ion-icon name="call" slot="start"></ion-icon>
+        <ion-label>{{ loadedActivity.contactDetails }}</ion-label>
+        <ion-note mode="ios" slot="end">Contact Number</ion-note>
+      </ion-item>
+      <div class="hr-line"></div>
+      <ion-text class="h6 subsection-header">Description</ion-text>
+      <ion-text class="body">{{ loadedActivity.description }}</ion-text>
+      <div class="hr-line"></div>
+      <ion-text class="h6 subsection-header">Rating</ion-text>
+      <ion-text class="body">Feature coming soon...</ion-text>
+    </div>
   </div>
-    
-
 </ion-content>
 
 <ion-footer mode="ios">
-  <ion-button *ngIf="!editable" id="book-btn" (click)="onBookActivity()" [disabled]="loadedActivity.cancelled">BOOK ACTIVITY</ion-button>
+  <div *ngIf="!isLoading">
+    <ion-button
+      *ngIf="!editable"
+      id="book-btn"
+      (click)="onBookActivity()"
+      [disabled]="loadedActivity.cancelled"
+      >BOOK ACTIVITY</ion-button
+    >
+  </div>
 </ion-footer>

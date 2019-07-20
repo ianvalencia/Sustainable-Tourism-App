@@ -1,7 +1,8 @@
 {
   "name": "Sustainable Tourism App",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

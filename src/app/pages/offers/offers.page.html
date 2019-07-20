@@ -4,7 +4,7 @@
       <ion-menu-button mode="md"></ion-menu-button>
     </ion-buttons>
     <ion-title>Offers</ion-title>
-    <ion-buttons  mode="md" slot="primary">
+    <ion-buttons mode="md" slot="primary">
       <ion-button [routerLink]="['/app/new-offer']">
         <ion-icon name="add" slot="icon-only"></ion-icon>
       </ion-button>
@@ -14,11 +14,21 @@
 
 <ion-content>
   <div id="offers-container" *ngIf="isOffersEmpty()">
-    <ion-text>
+    <ion-text class="h6">
       No activities offered
     </ion-text>
+    <ion-button color="primary" routerLink="/app/new-offer"
+      >OFFER NEW ACTIVITY</ion-button
+    >
   </div>
-  <ion-list *ngIf="!isOffersEmpty()">
-    <app-activity-card *ngFor="let offer of offers" [activity]="offer" [editMode]="true"></app-activity-card>
+  <ion-list *ngIf="!isOffersEmpty() && !isLoading">
+    <app-activity-card
+      *ngFor="let offer of offers"
+      [activity]="offer"
+      [editMode]="true"
+    ></app-activity-card>
   </ion-list>
+  <div class="fullscreen flex-center" *ngIf="!isOffersEmpty() && isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
 </ion-content>

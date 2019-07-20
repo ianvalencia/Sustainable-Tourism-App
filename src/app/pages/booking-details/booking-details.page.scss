@@ -2,6 +2,13 @@ ion-content {
   --background: #f2f2f2;
 }
 
+.withPadding {
+  --padding-top: 1em;
+  --padding-bottom: 1em;
+  --padding-start: 1em;
+  --padding-end: 1em;
+}
+
 .buy {
   display: flex;
   font-size: 12px;
@@ -27,9 +34,11 @@ ion-content {
   .bottom {
     >div {
       padding: 0 18px;
+
       &:first-child {
         padding-top: 18px;
       }
+
       &:last-child {
         padding-bottom: 18px;
       }
@@ -45,16 +54,20 @@ ion-content {
   .top {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+
     .deetz-row {
       padding-bottom: 16px !important;
+
       .item {
         flex: 1;
+
         .header {
           text-transform: uppercase;
           font-size: 12px;
           letter-spacing: 0.0125em;
           margin-bottom: 5px;
         }
+
         .data {
           font-size: 16px;
           font-weight: 600;
@@ -62,10 +75,11 @@ ion-content {
       }
     }
   }
-  
+
   .bottom {
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+
     // padding: 18px;
     // height: 30px;
     // padding-top: 10px;
@@ -86,6 +100,7 @@ ion-content {
     background-position: center;
     position: relative;
     box-shadow: 0 1px 0 0 #fff, 0 -1px 0 0 #fff;
+
     &:before,
     &:after {
       content: '';
@@ -98,16 +113,16 @@ ion-content {
       border-top-color: #fff;
       border-right-color: #fff;
       border-radius: 100%;
-      pointer-events:none;
+      pointer-events: none;
     }
+
     &:before {
       left: -10px;
     }
+
     &:after {
       transform: translate(-50%, -50%) rotate(225deg);
       right: -40px;
     }
   }
 }
-
-

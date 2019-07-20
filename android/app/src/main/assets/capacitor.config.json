@@ -1,0 +1,7 @@
+{
+  "appId": "com.bridge360.tripid",
+  "appName": "Tripid",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

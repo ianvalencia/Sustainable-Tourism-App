@@ -19,7 +19,7 @@ export class NewOfferPage implements OnInit {
     private activitiesService: ActivitiesService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onCancel() {
     this.navCtrl.back();
@@ -57,7 +57,7 @@ export class NewOfferPage implements OnInit {
 
     this.loadingCtrl.create({
       message: 'Creating new offer...'
-    }).then(loadingEL => {
+    }).then((loadingEL) => {
       loadingEL.present();
       this.activitiesService.addActivity(
         this.form.value['activity-name'],

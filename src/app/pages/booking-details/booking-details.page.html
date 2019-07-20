@@ -1,24 +1,36 @@
 <ion-header>
   <ion-toolbar mode="ios">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/app/tabs/bookings" mode="md"></ion-back-button>
+      <ion-back-button
+        defaultHref="/app/tabs/bookings"
+        mode="md"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title>Booking Summary</ion-title>
+    <ion-buttons slot="end" mode="md">
+      <ion-button (click)="onMore()">
+        <ion-icon name="more" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div class="ticket"> 
+<ion-content [ngClass]="bookingLoaded ? 'withPadding' : ''">
+  <div class="ticket" *ngIf="bookingLoaded">
     <div class="top flex-column">
       <span class="buy">
         <ion-text>E-TICKET</ion-text>
       </span>
 
-      <br>
+      <br />
 
       <div class="h6">
         <ion-text class="center-inline">{{ activity.name }}</ion-text>
-        <ion-icon class="center-inline" name="help-circle-outline" (click)="onSeeMore()"></ion-icon>
+        <ion-icon
+          class="center-inline"
+          name="help-circle-outline"
+          (click)="onSeeMore()"
+        ></ion-icon>
       </div>
 
       <div class="subtitle-1">
@@ -26,34 +38,41 @@
         <ion-text class="center-inline">{{ activity.location }}</ion-text>
       </div>
 
-      <br>
+      <br />
 
       <div class="deetz-row flex-row">
-          <div class="item flex-column">
-            <div class="header">Start Date</div>
-            <div class="data">{{ booking.bookingDate | date:'mediumDate' }}</div>
+        <div class="item flex-column">
+          <div class="header">Start Date</div>
+          <div class="data">{{ booking.bookingDate | date: "mediumDate" }}</div>
+        </div>
+
+        <div class="item flex-column">
+          <div class="header">Duration</div>
+          <div class="data">{{ activity.duration }} Days</div>
+        </div>
+      </div>
+
+      <div class="deetz-row flex-row">
+        <div class="item flex-column">
+          <div class="header">Traveler(s)</div>
+          <div class="data">
+            {{ booking.contactPerson.name
+            }}{{
+              booking.quantity > 1
+                ? " + " + (booking.quantity - 1) + " persons"
+                : ""
+            }}
           </div>
+        </div>
 
-          <div class="item flex-column">
-            <div class="header">Duration</div>
-            <div class="data">{{ activity.duration }} Days</div>
-          </div> 
-       </div> 
+        <div class="item flex-column">
+          <div class="header">Total</div>
+          <div class="data">₱ {{ booking.total | number: ".2-2" }}</div>
+        </div>
+      </div>
 
-       <div class="deetz-row flex-row">
-          <div class="item flex-column">
-            <div class="header">Traveler(s)</div>
-            <div class="data">{{ booking.contactPerson.name }}{{ booking.quantity > 1 ? ' + ' + (booking.quantity-1) + ' persons' : '' }}</div>
-          </div>
-
-          <div class="item flex-column">
-            <div class="header">Total</div>
-            <div class="data">₱ {{ booking.total | number:'.2-2' }}</div>
-          </div> 
-       </div> 
-
-       <div class="ion-text-center"><small>Terms & Conditions Apply</small></div>
-       <div class="ion-text-center"><small>www.bridge360.com.ph</small></div>
+      <div class="ion-text-center"><small>Terms & Conditions Apply</small></div>
+      <div class="ion-text-center"><small>www.bridge360.com.ph</small></div>
     </div>
     <div class="rip"></div>
     <div class="bottom">
@@ -64,8 +83,10 @@
       <div class="flex-row ion-justify-content-center">
         <qrcode [qrdata]="booking.id" [size]="128"></qrcode>
       </div>
-      
     </div>
-    <br>
- </div>
+    <br />
+  </div>
+  <div class="fullscreen flex-center" *ngIf="!bookingLoaded">
+    <ion-text class="h6">Booking not found!</ion-text>
+  </div>
 </ion-content>

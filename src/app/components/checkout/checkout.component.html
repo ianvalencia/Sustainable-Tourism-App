@@ -9,16 +9,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding >
+<ion-content padding>
   <form (ngSubmit)="onBook()" #booking="ngForm">
     <ion-list-header mode="ios">Traveler's Information</ion-list-header>
     <div>
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Full Name</ion-label>
-        <ion-input 
-          type="text" 
-          ngModel 
-          name="full-name" 
+        <ion-input
+          type="text"
+          ngModel
+          name="full-name"
           required
           autocapitalize
         ></ion-input>
@@ -26,18 +26,17 @@
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Contact Number</ion-label>
-        <ion-input type="tel" ngModel name="contact-number" required></ion-input>
+        <ion-input
+          type="tel"
+          ngModel
+          name="contact-number"
+          required
+        ></ion-input>
       </ion-item>
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Email Address</ion-label>
-        <ion-input 
-          type="email" 
-          ngModel 
-          name="email" 
-          required
-          email
-        ></ion-input>
+        <ion-input type="email" ngModel name="email" required email></ion-input>
       </ion-item>
     </div>
 
@@ -45,25 +44,42 @@
     <div>
       <ion-item lines="none" mode="md">
         <ion-label mode="md">Booking Date</ion-label>
-        <ion-datetime type="date" ngModel name="booking-date" required></ion-datetime>
+        <ion-datetime
+          type="date"
+          ngModel
+          name="booking-date"
+          required
+        ></ion-datetime>
       </ion-item>
 
       <div class="compact-items">
         <ion-item lines="none" mode="md">
           <ion-label mode="md">Available Slots</ion-label>
-          <ion-note id="payment" mode="ios" slot="end">{{ availableSlots }} persons</ion-note>
+          <ion-note id="payment" mode="ios" slot="end"
+            >{{ availableSlots }} persons</ion-note
+          >
         </ion-item>
-  
+
         <ion-item lines="none" mode="md">
           <ion-label>Persons</ion-label>
           <ion-buttons mode="md">
-            <ion-button color="primary" (click)="onDecrease()"  [disabled]="!canDecrease" >
+            <ion-button
+              color="primary"
+              (click)="onDecrease()"
+              [disabled]="!canDecrease"
+            >
               <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-buttons>
-          <ion-label class="ion-text-center" mode="md">{{ quantity }}</ion-label>
+          <ion-label class="ion-text-center" mode="md">{{
+            quantity
+          }}</ion-label>
           <ion-buttons mode="md">
-            <ion-button color="primary" (click)="onIncrease()" [disabled]="!canIncrease">
+            <ion-button
+              color="primary"
+              (click)="onIncrease()"
+              [disabled]="!canIncrease"
+            >
               <ion-icon name="add-circle" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-buttons>
@@ -75,7 +91,9 @@
     <div class="compact-items">
       <ion-item lines="none" mode="md">
         <ion-label mode="md">Total</ion-label>
-        <ion-note id="payment" mode="ios" slot="end">₱ {{ totalPayment | number:'.2-2' }}</ion-note>
+        <ion-note id="payment" mode="ios" slot="end"
+          >₱ {{ totalPayment | number: ".2-2" }}</ion-note
+        >
       </ion-item>
 
       <ion-item lines="none" mode="md" detail button (click)="onPromoCode()">
@@ -83,9 +101,9 @@
       </ion-item>
     </div>
 
-    <ion-button 
-      type="submit" 
-      class="ion-margin-top" 
+    <ion-button
+      type="submit"
+      class="ion-margin-top"
       expand="block"
       [disabled]="!booking.valid"
     >
@@ -93,9 +111,3 @@
     </ion-button>
   </form>
 </ion-content>
-<!-- 
-<ion-footer class="ion-no-padding" no-border>
-  <ion-button type="submit" class="ion-no-margin">
-    BOOK
-  </ion-button>
-</ion-footer> -->

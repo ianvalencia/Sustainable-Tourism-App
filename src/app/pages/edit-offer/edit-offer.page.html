@@ -1,7 +1,10 @@
-<ion-header>
+<ion-header *ngIf="!isLoading">
   <ion-toolbar mode="ios">
     <ion-buttons slot="start">
-      <ion-back-button mode="md" defaultHref="/app/tabs/offers"></ion-back-button>
+      <ion-back-button
+        mode="md"
+        defaultHref="/app/tabs/offers"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title>Edit Offer</ion-title>
     <ion-buttons slot="end" mode="md">
@@ -12,16 +15,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding >
+<ion-content padding *ngIf="!isLoading">
   <form (ngSubmit)="onSave()" #editForm="ngForm">
     <ion-list-header mode="ios">Activity Details</ion-list-header>
     <div>
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Activity Name</ion-label>
-        <ion-input 
-          type="text" 
-          [(ngModel)]="loadedActivity.name" 
-          name="activity-name" 
+        <ion-input
+          type="text"
+          [(ngModel)]="loadedActivity.name"
+          name="activity-name"
           required
           autocapitalize
         ></ion-input>
@@ -29,10 +32,19 @@
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md">Activity Type</ion-label>
-        <ion-select interface="popover" required [(ngModel)]="loadedActivity.activityType" name="activity-type">
+        <ion-select
+          interface="popover"
+          required
+          [(ngModel)]="loadedActivity.activityType"
+          name="activity-type"
+        >
           <ion-select-option value="Day Hiking">Day Hiking</ion-select-option>
-          <ion-select-option value="Mountaineering">Mountaineering</ion-select-option>
-          <ion-select-option value="Bike Packing">Bike Packing</ion-select-option>
+          <ion-select-option value="Mountaineering"
+            >Mountaineering</ion-select-option
+          >
+          <ion-select-option value="Bike Packing"
+            >Bike Packing</ion-select-option
+          >
           <ion-select-option value="Skin Diving">Skin Diving</ion-select-option>
           <ion-select-option value="Birding">Birding</ion-select-option>
         </ion-select>
@@ -40,102 +52,103 @@
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Description</ion-label>
-        <ion-textarea 
-          type="text" 
+        <ion-textarea
+          type="text"
           [(ngModel)]="loadedActivity.description"
-          name="description" 
+          name="description"
           required
           rows="6"
         ></ion-textarea>
       </ion-item>
-  
+
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Location</ion-label>
-        <ion-input 
-          type="text" 
+        <ion-input
+          type="text"
           [(ngModel)]="loadedActivity.location"
-          name="location" 
+          name="location"
           required
         ></ion-input>
       </ion-item>
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Price (per person)</ion-label>
-        <ion-input 
-          type="number" 
+        <ion-input
+          type="number"
           [(ngModel)]="loadedActivity.price"
-          name="price" 
+          name="price"
           required
         ></ion-input>
       </ion-item>
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Image URL</ion-label>
-        <ion-input 
-          type="text" 
-          [(ngModel)]="loadedActivity.imgUrl" 
-          name="image-url" 
+        <ion-input
+          type="text"
+          [(ngModel)]="loadedActivity.imgUrl"
+          name="image-url"
           required
         ></ion-input>
       </ion-item>
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Number to Contact</ion-label>
-        <ion-input 
-          type="tel" 
+        <ion-input
+          type="tel"
           [(ngModel)]="loadedActivity.contactDetails"
-          name="contact-number" 
+          name="contact-number"
           required
         ></ion-input>
       </ion-item>
     </div>
 
-
     <ion-list-header mode="ios">Activity Schedule</ion-list-header>
     <div>
       <ion-item lines="none" mode="md">
         <ion-label mode="md">Start of Bookable Date</ion-label>
-        <ion-datetime  
-          [(ngModel)]="startString" 
-          name="start-booking" 
+        <ion-datetime
+          [ngModel]="startString"
+          name="start-booking"
           required
         ></ion-datetime>
       </ion-item>
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md">End of Bookable Date</ion-label>
-        <ion-datetime  
-          [(ngModel)]="endString" 
-          name="end-booking" 
+        <ion-datetime
+          [ngModel]="endString"
+          name="end-booking"
           required
         ></ion-datetime>
       </ion-item>
 
       <ion-item lines="none" mode="md">
         <ion-label mode="md" position="floating">Duration</ion-label>
-        <ion-input 
-          type="number" 
-          [(ngModel)]="loadedActivity.duration" 
-          name="duration" 
+        <ion-input
+          type="number"
+          [(ngModel)]="loadedActivity.duration"
+          name="duration"
           required
           placeholder="Number of days"
         ></ion-input>
       </ion-item>
 
       <ion-item lines="none" mode="md">
-        <ion-label mode="md" position="floating">Max Number of Bookings</ion-label>
-        <ion-input 
-          type="number" 
-          [(ngModel)]="loadedActivity.capacity" 
-          name="max-bookings" 
+        <ion-label mode="md" position="floating"
+          >Max Number of Bookings</ion-label
+        >
+        <ion-input
+          type="number"
+          [(ngModel)]="loadedActivity.capacity"
+          name="max-bookings"
           required
         ></ion-input>
       </ion-item>
     </div>
 
-    <ion-button 
-      type="submit" 
-      class="ion-margin-top" 
+    <ion-button
+      type="submit"
+      class="ion-margin-top"
       expand="block"
       [disabled]="!editForm.valid"
     >

@@ -10,7 +10,7 @@ export class OnboardingGuard implements CanLoad {
   constructor(private storage: Storage, private router: Router) {}
 
   canLoad() {
-    this.storage.remove('onboarded');
+    // this.storage.remove('onboarded');
     return this.storage.get('onboarded').then(res => {
       if (res) {
         this.router.navigate(['/title']);

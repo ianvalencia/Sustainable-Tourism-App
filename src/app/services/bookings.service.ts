@@ -22,7 +22,7 @@ export class BookingsService {
   getBooking(id: string) {
     return this.bookings.pipe(
       take(1),
-      map(bookings => {
+      map((bookings) => {
         return {
           ...bookings.find(b => b.id === id)
         };
@@ -41,7 +41,7 @@ export class BookingsService {
     email: string
   ) {
     const newBooking = new Booking(
-      Math.random().toString(),
+      Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8),
       ownerId,
       actId,
       bookingDate,
@@ -54,14 +54,23 @@ export class BookingsService {
       },
       'payment'
     );
-    console.log('DONE');
     return this.bookings.pipe(
       take(1),
       delay(1000),
-      tap(bookings => {
+      tap((bookings) => {
         this._bookings.next(bookings.concat(newBooking));
       })
     );
 
+  }
+
+  cancelBooking(bookingId: string) {
+    return this.bookings.pipe(
+      take(1),
+      delay(1000),
+      tap((bookings) => {
+        this._bookings.next(bookings.filter(b => b.id !== bookingId));
+      })
+    );
   }
 }

@@ -12,8 +12,8 @@ export class Activity {
     public bookingEnd: Date,
     public capacity: number,
     public duration: number,
-    public owner: any,
+    public owner: { id: string, name: string },
     public bookings: number,
     public cancelled: boolean
-  ) {}
+  ) { }
 }

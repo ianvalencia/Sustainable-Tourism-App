@@ -21,7 +21,7 @@ export class CheckoutComponent implements OnInit {
     private alertCtrl: AlertController
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   async onPressCancel() {
     if (this.form.pristine) {
@@ -62,7 +62,7 @@ export class CheckoutComponent implements OnInit {
         bookingData: {
           fullname: this.form.value['full-name'],
           contactNumber: this.form.value['contact-number'],
-          email: this.form.value['email'],
+          email: this.form.value.email,
           total: +this.totalPayment,
           quantity: this.quantity,
           bookingDate: new Date(this.form.value['booking-date'])

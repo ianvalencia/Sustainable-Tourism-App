@@ -21,46 +21,33 @@
 </ion-header>
 
 <ion-content>
-  <!-- <div *ngIf="searching" class="spinner-container">
-    <ion-spinner></ion-spinner>
-  </div>
-
-  <div class="fullscreen" *ngIf="!searching" >
-    <div class="empty-container text-only"*ngIf="isActivitiesEmpty">
-      <ion-text class="h6">
-        No results found
-      </ion-text>
-      <ion-text class="subtitle-1">
-          Nothing came up for that search.
-        </ion-text>
-    </div>
-
-    <ion-virtual-scroll *ngIf="!isActivitiesEmpty" [items]="activities" [approxFooterHeight]="0" [approxHeaderHeight]="0" [approxItemHeight]="0">
-      <div *virtualItem="let item">
-        <app-activity-card [activity]="item"></app-activity-card>
-      </div>
-    </ion-virtual-scroll>
-  </div> -->
   <div class="flex-container">
     <div *ngIf="searching" class="inner-flex-container absolute-center">
       <ion-spinner></ion-spinner>
     </div>
-    <div *ngIf="!searching" class="inner-flex-container">
-      <!-- <ion-virtual-scroll *ngIf="!isActivitiesEmpty" [items]="activities">
-        <div *virtualItem="let item">
-          <app-activity-card [activity]="item"></app-activity-card>
-        </div>
-      </ion-virtual-scroll> -->
-      <div class="inner-flex-container absolute-center" *ngIf="isActivitiesEmpty">
+    <div
+      *ngIf="!searching && isLoading"
+      class="inner-flex-container absolute-center"
+    >
+      <ion-spinner></ion-spinner>
+    </div>
+    <div *ngIf="!searching && !isLoading" class="inner-flex-container">
+      <div
+        class="inner-flex-container absolute-center"
+        *ngIf="isActivitiesEmpty"
+      >
         <ion-text class="h6">
           No results found
         </ion-text>
         <ion-text class="subtitle-1">
-            Nothing came up for that search.
-          </ion-text>
+          Nothing came up for that search.
+        </ion-text>
       </div>
       <ion-list>
-        <app-activity-card *ngFor="let activity of activities" [activity]="activity"></app-activity-card>
+        <app-activity-card
+          *ngFor="let activity of activities"
+          [activity]="activity"
+        ></app-activity-card>
       </ion-list>
     </div>
   </div>

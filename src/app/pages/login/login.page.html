@@ -1,55 +1,86 @@
 <ion-content fullscreen>
-    <div class="login-content">
-      <ion-text class="ion-text-capitalize ion-margin-vertical h2">Sign In.</ion-text>
+  <div class="login-content">
+    <ion-text class="ion-text-capitalize ion-margin-vertical h2"
+      >Sign In.</ion-text
+    >
 
-  
-      <!-- Login form -->
-      <form mode="md">
-        <ion-list mode="md">
-          <ion-item mode="md">
-            <ion-label mode="md" position="floating">
-              <!-- <ion-icon name="mail" slot="start" class="icon"></ion-icon> -->
-              Email
-            </ion-label>
-            <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>
-          </ion-item>
-    
-          <ion-item mode="md">
-            <ion-label mode="md" position="floating">
-              <!-- <ion-icon name="lock" item-start class="text-primary"></ion-icon> -->
-              Password
-            </ion-label>
-            <ion-input [type]="showPassword?'string':'password'" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
-            <ion-buttons mode="md" slot="end">
-              <ion-button (click)="togglePassword()">
-                <ion-icon [name]="showPassword?'eye-off':'eye'" slot="icon-only"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-          </ion-item>
-        </ion-list>
-      </form>
+    <!-- Login form -->
+    <form mode="md">
+      <ion-list mode="md">
+        <ion-item mode="md">
+          <ion-label mode="md" position="floating">
+            <!-- <ion-icon name="mail" slot="start" class="icon"></ion-icon> -->
+            Email
+          </ion-label>
+          <ion-input
+            type="email"
+            [(ngModel)]="email"
+            [ngModelOptions]="{ standalone: true }"
+          ></ion-input>
+        </ion-item>
 
-      <div class="ion-margin-bottom" text-right>
-        <ion-text class="text-button" (click)="onForgotPassword()" color="inverted-primary">
-          <strong>Forgot Password?</strong>
-        </ion-text>
-      </div>
+        <ion-item mode="md">
+          <ion-label mode="md" position="floating">
+            <!-- <ion-icon name="lock" item-start class="text-primary"></ion-icon> -->
+            Password
+          </ion-label>
+          <ion-input
+            [type]="showPassword ? 'string' : 'password'"
+            [(ngModel)]="password"
+            [ngModelOptions]="{ standalone: true }"
+          ></ion-input>
+          <ion-buttons mode="md" slot="end">
+            <ion-button (click)="togglePassword()">
+              <ion-icon
+                [name]="showPassword ? 'eye-off' : 'eye'"
+                slot="icon-only"
+              ></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </form>
 
-      <div class="stretch flex-center">
-        <ion-button class="btn-signin" expand="block" (click)="onSubmit()" color="inverted-primary">SIGN IN</ion-button>
-        <app-text-divider></app-text-divider>
-        <ion-button class="btn-signin" expand="block" (click)="onGoogleSignIn()" fill="outline" color="inverted-primary">
-          <ion-icon name="logo-google" slot="start"></ion-icon>
-          SIGN IN WITH GOOGLE
-        </ion-button>
-      </div>
-      
-      <!-- Other links -->
-      <div text-center id="signup">
-        New here?
-        <ion-text class="text-button" color="inverted-primary" (click)="onSwitch()"><strong>Sign up</strong></ion-text>
-      </div>
-  
+    <div class="ion-margin-bottom" text-right>
+      <ion-text
+        class="text-button"
+        (click)="onForgotPassword()"
+        color="inverted-primary"
+      >
+        <strong>Forgot Password?</strong>
+      </ion-text>
     </div>
-  </ion-content>
-  
+
+    <div class="stretch flex-center">
+      <ion-button
+        class="btn-signin"
+        expand="block"
+        (click)="onSubmit()"
+        color="inverted-primary"
+        >SIGN IN</ion-button
+      >
+      <app-text-divider></app-text-divider>
+      <ion-button
+        class="btn-signin"
+        expand="block"
+        (click)="onGoogleSignIn()"
+        fill="outline"
+        color="inverted-primary"
+      >
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        SIGN IN WITH GOOGLE
+      </ion-button>
+    </div>
+
+    <!-- Other links -->
+    <div text-center id="signup">
+      New here?
+      <ion-text
+        class="text-button"
+        color="inverted-primary"
+        (click)="onSwitch()"
+        ><strong>Sign up</strong></ion-text
+      >
+    </div>
+  </div>
+</ion-content>

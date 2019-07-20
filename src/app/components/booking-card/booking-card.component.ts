@@ -21,7 +21,6 @@ export class BookingCardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.activitiesSub = this.activitiesService.getActivity(this.booking.actId).subscribe(activity => {
       this.activity = activity;
-      console.log(activity);
     });
   }
 

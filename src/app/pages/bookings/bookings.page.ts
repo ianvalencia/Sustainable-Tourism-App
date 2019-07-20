@@ -24,9 +24,8 @@ export class BookingsPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.bookingsSub = this.bookingsService.bookings.subscribe(bookings => {
+    this.bookingsSub = this.bookingsService.bookings.subscribe((bookings) => {
       this.bookings = bookings;
-      console.log(this.bookings);
     });
   }
 

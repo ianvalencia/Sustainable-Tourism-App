@@ -1,24 +1,27 @@
 <ion-header>
   <ion-toolbar mode="ios">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/app/tabs/discover" mode="md"></ion-back-button>
+      <ion-back-button
+        defaultHref="/app/tabs/discover"
+        mode="md"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title>My Favorites</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding-bottom">
-  <!-- <ion-virtual-scroll [items]="favorites" [approxFooterHeight]="0" [approxHeaderHeight]="0" [approxItemHeight]="0">
-    <div *virtualItem="let item">
-      <app-activity-card [activity]="item"></app-activity-card>
+  <div class="fullscreen" *ngIf="!isLoading">
+    <div *ngIf="favorites.length === 0" class="flex-center fullscreen">
+      <ion-text>
+        No saved activities
+      </ion-text>
     </div>
-  </ion-virtual-scroll> -->
-  <div *ngIf="favorites.length === 0" class="flex-center fullscreen">
-    <ion-text>
-      No saved activities
-    </ion-text>
+    <ion-list *ngIf="favorites.length !== 0">
+      <app-activity-card
+        *ngFor="let favorite of favorites"
+        [activity]="favorite"
+      ></app-activity-card>
+    </ion-list>
   </div>
-  <ion-list *ngIf="favorites.length !== 0">
-    <app-activity-card *ngFor="let favorite of favorites" [activity]="favorite"></app-activity-card>
-  </ion-list>
 </ion-content>

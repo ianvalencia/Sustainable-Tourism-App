@@ -8,12 +8,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import firebaseConfig from './firebase';
+import firebase from './firebase';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './user.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { QRCodeModule } from 'angularx-qrcode';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -22,9 +23,10 @@ import { IonicStorageModule } from '@ionic/storage';
   entryComponents: [],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     IonicStorageModule.forRoot(),
@@ -38,4 +40,4 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

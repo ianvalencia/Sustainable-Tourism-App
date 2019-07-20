@@ -68,7 +68,11 @@ const routes: Routes = [
             pathMatch: 'full'
           }
         ]
-      }
+      },
+      {
+        path: 'about-page',
+        loadChildren: './pages/about-page/about-page.module#AboutPagePageModule'
+      },
     ]
   },
   {
@@ -76,7 +80,8 @@ const routes: Routes = [
     loadChildren: './pages/onboarding/onboarding.module#OnboardingPageModule',
     canLoad: [OnboardingGuard]
   },
-  { path: 'title',
+  {
+    path: 'title',
     loadChildren: './pages/title/title.module#TitlePageModule'
   },
   {

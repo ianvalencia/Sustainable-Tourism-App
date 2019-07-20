@@ -16,13 +16,16 @@ ion-item:first-child {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+
 ion-item:last-child {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
 ion-item {
   --background: rgba(255, 255, 255, 1);
   margin-bottom: 1px;
+
   ion-label {
     --color: #0B485A;
   }

@@ -3,7 +3,7 @@
     <ion-content>
       <div id="menu-header">
         <ion-avatar>
-            <img [src]="'assets/icon/favicon.png'">
+          <img [src]="'assets/icon/favicon.png'" />
         </ion-avatar>
         <ion-text class="h6 ion-padding-top">Juan Dela Cruz</ion-text>
         <ion-text class="subtitle-1 ion-padding-top">Tourist</ion-text>
@@ -11,12 +11,28 @@
       <div class="ion-padding">
         <ion-list class="ion-padding" id="menu-list">
           <ion-menu-toggle *ngFor="let item of menuItems">
-            <ion-item mode="md" lines="none" class="menu-items" [routerLink]="item.link">
+            <ion-item
+              mode="md"
+              lines="none"
+              class="menu-items"
+              [routerLink]="item.link"
+            >
               <ion-icon [name]="item.icon" slot="start"></ion-icon>
               <ion-label>{{ item.label }}</ion-label>
-            </ion-item>            
+            </ion-item>
           </ion-menu-toggle>
           <div id="menu-divider"></div>
+          <ion-menu-toggle>
+            <ion-item
+              mode="md"
+              lines="none"
+              routerLink="/app/about-page"
+              button
+            >
+              <ion-icon name="information-circle" slot="start"></ion-icon>
+              <ion-label>About</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
           <ion-menu-toggle>
             <ion-item mode="md" lines="none" (click)="onLogout()" button>
               <ion-icon name="exit" slot="start"></ion-icon>
