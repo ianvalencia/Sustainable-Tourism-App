@@ -3,5 +3,6 @@
   "appName": "Tripid",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "www"
+  "webDir": "www",
+  "linuxAndroidStudioPath": "/home/ian/android-studio/bin/studio.sh"
 }

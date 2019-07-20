@@ -333,7 +333,8 @@ export class ActivitiesService {
     bookingStart: Date,
     bookingEnd: Date,
     capacity: number,
-    duration: number
+    duration: number,
+    cancelled: boolean
   ) {
     let updatedActivities: Activity[];
     return this.activities.pipe(
@@ -364,7 +365,7 @@ export class ActivitiesService {
           duration,
           oldActivity.owner,
           oldActivity.bookings,
-          oldActivity.cancelled
+          cancelled
         );
         return this.http.put(
           `https://sustainable-tourism-bridge360.firebaseio.com/offered-activities/${id}.json`,

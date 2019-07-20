@@ -22,7 +22,7 @@ import { UserService } from "src/app/user.service";
   styleUrls: ["./activity-details.page.scss"]
 })
 export class ActivityDetailsPage implements OnInit, OnDestroy {
-  loadedActivity;
+  loadedActivity: Activity;
   editable;
   private placeSub: Subscription;
   isLoading = true;
@@ -36,8 +36,7 @@ export class ActivityDetailsPage implements OnInit, OnDestroy {
     private router: Router,
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
-    private bookingsService: BookingsService,
-    private userService: UserService
+    private bookingsService: BookingsService
   ) {}
 
   ngOnInit() {
@@ -102,7 +101,6 @@ export class ActivityDetailsPage implements OnInit, OnDestroy {
               const data = resultData.data.bookingData;
               this.bookingsService
                 .addBooking(
-                  this.userService.User.id,
                   this.actId,
                   data.bookingDate,
                   data.quantity,
@@ -144,12 +142,24 @@ export class ActivityDetailsPage implements OnInit, OnDestroy {
                 })
                 .then(loadingEL => {
                   loadingEL.present();
-                  this.ActService.toggleCancellation(this.actId).subscribe(
-                    () => {
-                      loadingEL.dismiss();
-                      this.navCtrl.back();
-                    }
-                  );
+                  this.ActService.updateActivity(
+                    this.loadedActivity.id,
+                    this.loadedActivity.name,
+                    this.loadedActivity.activityType,
+                    this.loadedActivity.description,
+                    this.loadedActivity.location,
+                    this.loadedActivity.price,
+                    this.loadedActivity.imgUrl,
+                    this.loadedActivity.contactDetails,
+                    this.loadedActivity.bookingStart,
+                    this.loadedActivity.bookingEnd,
+                    this.loadedActivity.capacity,
+                    this.loadedActivity.duration,
+                    !this.loadedActivity.cancelled
+                  ).subscribe(() => {
+                    loadingEL.dismiss();
+                    this.navCtrl.back();
+                  });
                 });
             }
           },

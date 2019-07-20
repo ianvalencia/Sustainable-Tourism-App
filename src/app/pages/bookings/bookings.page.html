@@ -19,8 +19,10 @@
       <ion-label>To Rate</ion-label>
     </ion-segment-button>
   </ion-segment> -->
-
-  <div class="fullscreen flex-center" *ngIf="isBookingsEmpty()">
+  <div class="fullscreen flex-center" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+  <div class="fullscreen flex-center" *ngIf="isBookingsEmpty() && !isLoading">
     <ion-text>
       No activities booked
     </ion-text>
@@ -31,7 +33,7 @@
       <app-booking-card [booking]="item"></app-booking-card>
     </div>
   </ion-virtual-scroll> -->
-  <ion-list *ngIf="!isBookingsEmpty()">
+  <ion-list *ngIf="!isBookingsEmpty() && !isLoading">
     <app-booking-card
       *ngFor="let booking of bookings"
       [booking]="booking"

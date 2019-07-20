@@ -9,6 +9,8 @@ interface User {
 
 @Injectable() // Makes it injectable to other components
 export class UserService {
+  private _userIsAuthenticated = false;
+
   private user: User;
   private _user = {
     id: "def",
@@ -20,6 +22,18 @@ export class UserService {
   }
 
   constructor(private afAuth: AngularFireAuth) {}
+
+  get userIsAuthenticated() {
+    return this._userIsAuthenticated;
+  }
+
+  login() {
+    this._userIsAuthenticated = true;
+  }
+
+  logout() {
+    this._userIsAuthenticated = false;
+  }
 
   setUser(user: User) {
     this.user = user;

@@ -1,44 +1,33 @@
-<ion-card mode="ios" [routerLink]="['/app/booking-details', booking.id]">
-  <!-- <div class="card-content">  
-    <div class="upper-left">
-      <ion-text class="subtitle-1">
-        <ion-icon class="center-inline" name="pin"></ion-icon>
-        <span class="center-inline"> {{ activity.location }}</span>
-      </ion-text>
-      <ion-text class="h5">
-        {{ (activity.name.length > maxNameLength) ? (activity.name | slice:0:maxNameLength )+'...' : activity.name }}
-      </ion-text>
-      <ion-text class="subtitle-1">{{ booking.schedule }} | ₱ {{ booking.price | number:'.2-2' }}</ion-text>
-    </div>
-  </div>
-  <div class="card-content">  
-    <div class="upper-left">
-      <ion-text class="subtitle-1">
-        <ion-icon class="center-inline" name="pin"></ion-icon>
-        <span class="center-inline"> {{ activity.location }}</span>
-      </ion-text>
-      <ion-text class="h5">
-        {{ (activity.name.length > maxNameLength) ? (activity.name | slice:0:maxNameLength )+'...' : activity.name }}
-      </ion-text>
-      <ion-text class="subtitle-1">{{ booking.schedule }} | ₱ {{ booking.price | number:'.2-2' }}</ion-text>
-    </div>
-  </div> -->
-  <!-- <div class="card-thumbnail" [ngStyle]="{'background': 'url(' + booking.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">  
-  1
-  </div> -->
-  
+<ion-card
+  mode="ios"
+  [routerLink]="['/app/booking-details', booking.id]"
+  *ngIf="activity"
+>
   <div class="card-content">
     <div class="card-text">
       <ion-text class="subtitle-1">
         <ion-icon class="center-inline" name="pin"></ion-icon>
         <span class="center-inline"> {{ activity.location }}</span>
       </ion-text>
-      <ion-text class="h5">
-        {{ (activity.name.length > maxNameLength) ? (activity.name | slice:0:maxNameLength )+'...' : activity.name }}
+      <ion-text class="h6">
+        {{
+          activity.name.length > maxNameLength
+            ? (activity.name | slice: 0:maxNameLength) + "..."
+            : activity.name
+        }}
       </ion-text>
-      <ion-text class="subtitle-1">{{ booking.bookingDate | date:'mediumDate' }} | ₱ {{ booking.total | number:'.2-2' }}</ion-text>
+      <ion-text class="subtitle-1"
+        >{{ booking.bookingDate | date: "mediumDate" }} | ₱
+        {{ booking.total | number: ".2-2" }}</ion-text
+      >
     </div>
-    <div class="card-thumbnail" [ngStyle]="{'background': 'url(' + activity.imgUrl + ')', 'background-position': 'center center', 'background-size': 'cover'}">
-    </div>
+    <div
+      class="card-thumbnail"
+      [ngStyle]="{
+        background: 'url(' + activity.imgUrl + ')',
+        'background-position': 'center center',
+        'background-size': 'cover'
+      }"
+    ></div>
   </div>
 </ion-card>

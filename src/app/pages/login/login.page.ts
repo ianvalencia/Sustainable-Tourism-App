@@ -4,7 +4,8 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import {
   AlertController,
   ToastController,
-  LoadingController
+  LoadingController,
+  MenuController
 } from "@ionic/angular";
 import { UserService } from "src/app/user.service";
 import { Storage } from "@ionic/storage";
@@ -27,7 +28,8 @@ export class LoginPage implements OnInit {
     public AfAuth: AngularFireAuth,
     public user: UserService,
     private loadingCtrl: LoadingController,
-    private storage: Storage
+    private storage: Storage,
+    private menuCtrl: MenuController
   ) {}
 
   async presentAlert(title: string, content: string) {
@@ -41,7 +43,12 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
+
   async onSubmit() {
+    this.user.login();
     const { email, password } = this;
     this.loadingCtrl
       .create({
@@ -82,6 +89,7 @@ export class LoginPage implements OnInit {
   }
 
   onGoogleSignIn() {
+    this.user.login();
     this.router.navigateByUrl("/app/tabs/discover");
   }
 
@@ -129,5 +137,10 @@ export class LoginPage implements OnInit {
 
   togglePassword() {
     this.showPassword = !this.showPassword;
+  }
+
+  ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.menuCtrl.enable(true);
   }
 }

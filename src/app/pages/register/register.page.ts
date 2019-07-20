@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { auth } from "firebase/app";
+import { Router } from "@angular/router";
 
-import { AlertController } from '@ionic/angular';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { UserService } from 'src/app/user.service';
+import { AlertController, MenuController } from "@ionic/angular";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { UserService } from "src/app/user.service";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: "app-register",
+  templateUrl: "./register.page.html",
+  styleUrls: ["./register.page.scss"]
 })
 export class RegisterPage implements OnInit {
   showPassword = false;
-  fname = '';
-  email = '';
-  password = '';
-  cpassword = '';
+  fname = "";
+  email = "";
+  password = "";
+  cpassword = "";
 
   constructor(
     private router: Router,
@@ -25,26 +25,32 @@ export class RegisterPage implements OnInit {
     public alert: AlertController,
     public afstore: AngularFirestore,
     public user: UserService,
-    public alertController: AlertController
-  ) { }
+    public alertController: AlertController,
+    private menuCtrl: MenuController
+  ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
   async presentAlert(title: string, content: string) {
     const alert = await this.alertController.create({
       header: title,
       message: content,
-      buttons: ['OK']
+      buttons: ["OK"]
     });
     await alert.present();
   }
 
-
   async onSubmit() {
-    const{ fname, email, password } = this;
+    const { fname, email, password } = this;
     try {
-      const res = await this.AfAuth.auth.createUserWithEmailAndPassword(email, password);
+      const res = await this.AfAuth.auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
 
       this.afstore.doc(`users/${res.user.uid}`).set({
         fname,
@@ -52,43 +58,44 @@ export class RegisterPage implements OnInit {
       });
 
       this.user.setUser({
-       // fname,
+        // fname,
         email,
         uid: res.user.uid
       });
 
-
-
-      this.showAlert('Success!', 'Your account is now registered');
-      this.router.navigateByUrl('/app/tabs/discover');
+      this.showAlert("Success!", "Your account is now registered");
+      this.router.navigateByUrl("/app/tabs/discover");
     } catch (error) {
       console.dir(error);
-      this.showAlert('Error', error.message);
-      this.router.navigateByUrl('/register');
+      this.showAlert("Error", error.message);
+      this.router.navigateByUrl("/register");
     }
   }
 
   onGoogleSignUp() {
-    this.router.navigateByUrl('/app/tabs/discover');
+    this.router.navigateByUrl("/app/tabs/discover");
   }
 
   onSwitch() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl("/login");
   }
 
   async showAlert(header: string, message: string) {
     const alert = await this.alert.create({
       header,
       message,
-      buttons: ['Ok']
+      buttons: ["Ok"]
     });
 
     await alert.present();
-
   }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
 
+  ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.menuCtrl.enable(true);
+  }
 }

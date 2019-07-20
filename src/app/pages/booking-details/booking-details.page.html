@@ -15,8 +15,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [ngClass]="bookingLoaded ? 'withPadding' : ''">
-  <div class="ticket" *ngIf="bookingLoaded">
+<ion-content [ngClass]="!isLoading ? 'withPadding' : ''">
+  <div class="ticket" *ngIf="!isLoading">
     <div class="top flex-column">
       <span class="buy">
         <ion-text>E-TICKET</ion-text>
@@ -76,17 +76,13 @@
     </div>
     <div class="rip"></div>
     <div class="bottom">
-      <!-- <div class="h6">
-        <ion-text class="center-inline">{{ booking.name }}</ion-text>
-        <ion-icon class="center-inline" name="help-circle-outline" (click)="onSeeMore()"></ion-icon>
-      </div> -->
       <div class="flex-row ion-justify-content-center">
         <qrcode [qrdata]="booking.id" [size]="128"></qrcode>
       </div>
     </div>
     <br />
   </div>
-  <div class="fullscreen flex-center" *ngIf="!bookingLoaded">
-    <ion-text class="h6">Booking not found!</ion-text>
+  <div class="fullscreen flex-center" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
   </div>
 </ion-content>
