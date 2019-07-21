@@ -19,6 +19,7 @@ export class FavoritesService {
     
   }
 
+
   get favorites() {
     return [...this._favorites];
   }

@@ -17,6 +17,13 @@ export class FavoritesPage implements OnInit, OnDestroy {
 
   constructor(private activitiesService: ActivitiesService) {}
 
+  ionViewWillEnter() {
+    this.isLoading = true;
+    this.activitiesService.fetchFavorites().subscribe(() => {
+      this.isLoading = false;
+    })
+  }
+  
   ngOnInit() {
     this.isLoading = true;
     this.activitiesSub = this.activitiesService.favorites.subscribe(

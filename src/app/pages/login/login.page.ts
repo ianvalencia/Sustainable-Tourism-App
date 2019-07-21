@@ -9,6 +9,7 @@ import {
 } from "@ionic/angular";
 import { UserService } from "src/app/user.service";
 import { Storage } from "@ionic/storage";
+import * as firebase from 'firebase';
 
 @Component({
   selector: "app-login",
@@ -68,6 +69,7 @@ export class LoginPage implements OnInit {
               uid: res.user.uid
             });
           }
+          firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
           this.router.navigateByUrl("/app/tabs/discover");
           loadingEl.dismiss();
         } catch (err) {

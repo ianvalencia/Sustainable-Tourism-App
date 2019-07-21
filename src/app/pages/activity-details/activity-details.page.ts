@@ -14,7 +14,8 @@ import { ActivitiesService } from "src/app/services/activities.service";
 import { FavoritesService } from "src/app/services/favorites.service";
 import { CheckoutComponent } from "src/app/components/checkout/checkout.component";
 import { BookingsService } from "src/app/services/bookings.service";
-import { UserService } from "src/app/user.service";
+import { UserService } from 'src/app/user.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: "app-activity-details",
@@ -36,7 +37,9 @@ export class ActivityDetailsPage implements OnInit, OnDestroy {
     private router: Router,
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
-    private bookingsService: BookingsService
+    private bookingsService: BookingsService,
+    public afstore: AngularFirestore, 
+    public user: UserService
   ) {}
 
   ngOnInit() {

@@ -6,6 +6,8 @@ import { BehaviorSubject, of } from "rxjs";
 import { take, map, filter, tap, delay, switchMap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Placeholder } from "@angular/compiler/src/i18n/i18n_ast";
+//import { UserService } from 'src/app/user.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 interface ActivityData {
   activityType: string;
@@ -116,7 +118,7 @@ export class ActivitiesService {
 
   private _favoritesId = new BehaviorSubject<string[]>([]);
 
-  constructor(private userService: UserService, private http: HttpClient) {}
+  constructor(private userService: UserService, private http: HttpClient, public afstore: AngularFirestore) {}
 
   fetchActivities() {
     return this.http
@@ -156,6 +158,16 @@ export class ActivitiesService {
         })
       );
   }
+
+  fetchFavorites(){
+    return this.afstore.doc(`users/${this.userService.getUID()}`).get().pipe(
+        tap(doc => {
+          console.log(doc.data()['favorites_holder']);
+          this._favoritesId.next(doc.data().favorites_holder)
+        })
+    );
+  }
+
 
   get activities() {
     return this._activities.asObservable();
@@ -200,6 +212,15 @@ export class ActivitiesService {
         this._favoritesId.next(ids.concat(id));
       });
     }
+    this.favoritesId.pipe(
+      take(1)
+    ).subscribe(activities => {
+      this.afstore.doc(`users/${this.userService.getUID()}`).update({
+        favorites_holder: activities
+      })
+    })
+
+
   }
   // changing this will affect getting favorites
   // getActivity(actId: string) {
