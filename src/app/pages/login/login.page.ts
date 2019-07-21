@@ -9,7 +9,7 @@ import {
 } from "@ionic/angular";
 import { UserService } from "src/app/user.service";
 import { Storage } from "@ionic/storage";
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 
 @Component({
   selector: "app-login",
@@ -49,7 +49,6 @@ export class LoginPage implements OnInit {
   }
 
   async onSubmit() {
-    this.user.login();
     const { email, password } = this;
     this.loadingCtrl
       .create({
@@ -59,19 +58,17 @@ export class LoginPage implements OnInit {
       .then(async loadingEl => {
         loadingEl.present();
         try {
+          firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
           const res = await this.AfAuth.auth.signInWithEmailAndPassword(
             email,
             password
           );
-          if (res.user) {
-            this.user.setUser({
-              email,
-              uid: res.user.uid
-            });
-          }
-          firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-          this.router.navigateByUrl("/app/tabs/discover");
-          loadingEl.dismiss();
+          this.user.setUser().subscribe(() => {
+            this.user.login();
+            console.log(this.AfAuth.auth.currentUser);
+            this.router.navigateByUrl("/app/tabs/discover");
+            loadingEl.dismiss();
+          });
         } catch (err) {
           loadingEl.dismiss();
           if (err.code === "auth/invalid-email") {

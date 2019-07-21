@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { tap } from "rxjs/operators";
 
 interface User {
   // fname: string,
-  email: string;
-  uid: string;
+  id: string;
+  name: string;
 }
 
 @Injectable() // Makes it injectable to other components
@@ -12,16 +14,20 @@ export class UserService {
   private _userIsAuthenticated = false;
 
   private user: User;
-  private _user = {
-    id: "def",
-    name: "Juan Dela Cruz"
-  };
+  // private _user = {
+  //   id: "def",
+  //   name: "Juan Dela Cruz"
+  // };
+  private _user: User;
 
   get User() {
     return this._user;
   }
 
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afStore: AngularFirestore
+  ) {}
 
   get userIsAuthenticated() {
     return this._userIsAuthenticated;
@@ -35,20 +41,32 @@ export class UserService {
     this._userIsAuthenticated = false;
   }
 
-  setUser(user: User) {
-    this.user = user;
+  setUser() {
+    const user = this.afAuth.auth.currentUser;
+
+    return this.afStore
+      .doc(`users/${user.uid}`)
+      .get()
+      .pipe(
+        tap(doc => {
+          console.log(doc.data().displayName);
+          this._user = {
+            id: user.uid,
+            name: doc.data().name
+          };
+        })
+      );
   }
 
-  getUID() {
-    if (!this.user) {
-      if (this.afAuth.auth.currentUser) {
-        const user = this.afAuth.auth.currentUser;
-        this.setUser({
-          email: user.email,
-          uid: user.uid
-        });
-      }
-    }
-    return this.user.uid;
-  }
+  // getUID() {
+  //   if (!this._user) {
+  //     if (this.afAuth.auth.currentUser) {
+  //       this.setUser();
+  //     } else {
+  //       console.log('No user found!');
+  //     }
+  //   }
+  //   console.log(this.afAuth.auth.currentUser);
+  //   return this.user.uid;
+  // }
 }

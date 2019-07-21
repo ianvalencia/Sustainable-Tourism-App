@@ -1,11 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { auth } from "firebase/app";
 import { Router } from "@angular/router";
 
-import { AlertController, MenuController } from "@ionic/angular";
+import {
+  AlertController,
+  MenuController,
+  LoadingController
+} from "@ionic/angular";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { UserService } from "src/app/user.service";
+import * as firebase from "firebase";
 
 @Component({
   selector: "app-register",
@@ -21,12 +25,13 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private router: Router,
-    public AfAuth: AngularFireAuth,
+    public afAuth: AngularFireAuth,
     public alert: AlertController,
-    public afstore: AngularFirestore,
+    public afStore: AngularFirestore,
     public user: UserService,
     public alertController: AlertController,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {}
@@ -47,24 +52,25 @@ export class RegisterPage implements OnInit {
   async onSubmit() {
     const { fname, email, password } = this;
     try {
-      const res = await this.AfAuth.auth.createUserWithEmailAndPassword(
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword(
         email,
         password
       );
 
-      this.afstore.doc(`users/${res.user.uid}`).set({
-        fname,
-        email
-      });
-
-      this.user.setUser({
-        // fname,
-        email,
-        uid: res.user.uid
-      });
-
-      this.showAlert("Success!", "Your account is now registered");
-      this.router.navigateByUrl("/app/tabs/discover");
+      this.afStore
+        .doc(`users/${res.user.uid}`)
+        .set({
+          displayName: fname,
+          email,
+          favorites_holder: []
+        })
+        .then(() => {
+          this.user.setUser().subscribe(() => {
+            this.showAlert("Success!", "Your account is now registered");
+            this.user.login();
+            this.router.navigateByUrl("/app/tabs/discover");
+          });
+        });
     } catch (error) {
       console.dir(error);
       this.showAlert("Error", error.message);

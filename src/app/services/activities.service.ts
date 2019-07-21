@@ -1,17 +1,12 @@
 import { Injectable } from "@angular/core";
 
 import { Activity } from "../interfaces/activity";
-import { UserService } from "../user.service";
 import { BehaviorSubject, of } from "rxjs";
 import { take, map, filter, tap, delay, switchMap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Placeholder } from "@angular/compiler/src/i18n/i18n_ast";
-<<<<<<< HEAD
-//import { UserService } from 'src/app/user.service';
-import { AngularFirestore } from '@angular/fire/firestore';
-=======
+import { UserService } from "src/app/user.service";
 import { AngularFirestore } from "@angular/fire/firestore";
->>>>>>> Drafted changes
 
 interface ActivityData {
   activityType: string;
@@ -125,7 +120,7 @@ export class ActivitiesService {
   constructor(
     private userService: UserService,
     private http: HttpClient,
-    private afstore: AngularFirestore
+    private afStore: AngularFirestore
   ) {}
 
   fetchActivities() {
@@ -167,15 +162,17 @@ export class ActivitiesService {
       );
   }
 
-  fetchFavorites(){
-    return this.afstore.doc(`users/${this.userService.getUID()}`).get().pipe(
+  fetchFavorites() {
+    return this.afStore
+      .doc(`users/${this.userService.User.id}`)
+      .get()
+      .pipe(
         tap(doc => {
-          console.log(doc.data()['favorites_holder']);
-          this._favoritesId.next(doc.data().favorites_holder)
+          console.log(doc.data()["favorites_holder"]);
+          this._favoritesId.next(doc.data().favorites_holder);
         })
-    );
+      );
   }
-
 
   get activities() {
     return this._activities.asObservable();
@@ -220,15 +217,11 @@ export class ActivitiesService {
         this._favoritesId.next(ids.concat(id));
       });
     }
-    this.favoritesId.pipe(
-      take(1)
-    ).subscribe(activities => {
-      this.afstore.doc(`users/${this.userService.getUID()}`).update({
+    this.favoritesId.pipe(take(1)).subscribe(activities => {
+      this.afStore.doc(`users/${this.userService.User.id}`).update({
         favorites_holder: activities
-      })
-    })
-
-
+      });
+    });
   }
   // changing this will affect getting favorites
   // getActivity(actId: string) {
