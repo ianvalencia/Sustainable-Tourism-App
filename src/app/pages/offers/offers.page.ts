@@ -3,9 +3,10 @@ import { ModalController } from "@ionic/angular";
 import { Subscription } from "rxjs";
 
 import { Activity } from "src/app/interfaces/activity";
+
 import { NewOfferComponent } from "src/app/components/new-offer/new-offer.component";
+
 import { ActivitiesService } from "src/app/services/activities.service";
-import { UserService } from "src/app/user.service";
 
 @Component({
   selector: "app-offers",
@@ -19,8 +20,7 @@ export class OffersPage implements OnInit, OnDestroy {
 
   constructor(
     private modalCtrl: ModalController,
-    private activitiesService: ActivitiesService,
-    private userService: UserService
+    private activitiesService: ActivitiesService
   ) {}
 
   get offers() {

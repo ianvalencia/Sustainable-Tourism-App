@@ -11,11 +11,11 @@ import { Subscription } from "rxjs";
 import { Activity } from "src/app/interfaces/activity";
 
 import { ActivitiesService } from "src/app/services/activities.service";
-import { FavoritesService } from "src/app/services/favorites.service";
-import { CheckoutComponent } from "src/app/components/checkout/checkout.component";
 import { BookingsService } from "src/app/services/bookings.service";
-import { UserService } from 'src/app/user.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+
+import { CheckoutComponent } from "src/app/components/checkout/checkout.component";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { UserService } from "src/app/user.service";
 
 @Component({
   selector: "app-activity-details",
@@ -38,7 +38,7 @@ export class ActivityDetailsPage implements OnInit, OnDestroy {
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
     private bookingsService: BookingsService,
-    public afstore: AngularFirestore, 
+    public afstore: AngularFirestore,
     public user: UserService
   ) {}
 

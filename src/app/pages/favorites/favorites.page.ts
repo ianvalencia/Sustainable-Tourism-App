@@ -21,9 +21,9 @@ export class FavoritesPage implements OnInit, OnDestroy {
     this.isLoading = true;
     this.activitiesService.fetchFavorites().subscribe(() => {
       this.isLoading = false;
-    })
+    });
   }
-  
+
   ngOnInit() {
     this.isLoading = true;
     this.activitiesSub = this.activitiesService.favorites.subscribe(

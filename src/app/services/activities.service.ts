@@ -6,8 +6,12 @@ import { BehaviorSubject, of } from "rxjs";
 import { take, map, filter, tap, delay, switchMap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Placeholder } from "@angular/compiler/src/i18n/i18n_ast";
+<<<<<<< HEAD
 //import { UserService } from 'src/app/user.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+=======
+import { AngularFirestore } from "@angular/fire/firestore";
+>>>>>>> Drafted changes
 
 interface ActivityData {
   activityType: string;
@@ -118,7 +122,11 @@ export class ActivitiesService {
 
   private _favoritesId = new BehaviorSubject<string[]>([]);
 
-  constructor(private userService: UserService, private http: HttpClient, public afstore: AngularFirestore) {}
+  constructor(
+    private userService: UserService,
+    private http: HttpClient,
+    private afstore: AngularFirestore
+  ) {}
 
   fetchActivities() {
     return this.http
