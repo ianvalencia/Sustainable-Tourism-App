@@ -49,33 +49,42 @@ export class RegisterPage implements OnInit {
     await alert.present();
   }
 
-  async onSubmit() {
+  onSubmit() {
     const { fname, email, password } = this;
-    try {
-      const res = await this.afAuth.auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+    this.loadingCtrl
+      .create({
+        message: "Signing you up...",
+        keyboardClose: true
+      })
+      .then(async loadingEL => {
+        loadingEL.present();
+        try {
+          const res = await this.afAuth.auth.createUserWithEmailAndPassword(
+            email,
+            password
+          );
 
-      this.afStore
-        .doc(`users/${res.user.uid}`)
-        .set({
-          displayName: fname,
-          email,
-          favorites_holder: []
-        })
-        .then(() => {
-          this.user.setUser().subscribe(() => {
-            this.showAlert("Success!", "Your account is now registered");
-            this.user.login();
-            this.router.navigateByUrl("/app/tabs/discover");
-          });
-        });
-    } catch (error) {
-      console.dir(error);
-      this.showAlert("Error", error.message);
-      this.router.navigateByUrl("/register");
-    }
+          this.afStore
+            .doc(`users/${res.user.uid}`)
+            .set({
+              displayName: fname,
+              email,
+              favorites_holder: []
+            })
+            .then(() => {
+              this.user.setUser().subscribe(() => {
+                loadingEL.dismiss();
+                this.showAlert("Success!", "Your account is now registered");
+                this.user.login();
+                this.router.navigateByUrl("/app/tabs/discover");
+              });
+            });
+        } catch (error) {
+          loadingEL.dismiss();
+          this.showAlert("Error", error.message);
+          this.router.navigateByUrl("/register");
+        }
+      });
   }
 
   onGoogleSignUp() {
